@@ -3,13 +3,14 @@ language:
 env:
   global: LATEST_TAG=1
   matrix:
-  - VERSION=2.7.8 NUMPY_VERSION=1.6.0
+  - VERSION=2.7.8 NUMPY_VERSION=1.6.1
   - VERSION=3.3.5 NUMPY_VERSION=1.7.1
   - VERSION=3.4.1 NUMPY_VERSION=1.7.1
 install:
 - source terryfy/travis_tools.sh
 - get_python_environment macpython $VERSION venv
-- pip install -f $NIPY_INSTALLERS numpy cython wheel six
+- pip install -f $NIPY_WHEELHOUSE numpy==$NUMPY_VERSION
+- pip install cython wheel
 - if [ -n "$LATEST_TAG" ]; then checkout_closest_tag pandas; fi
 - cd pandas
 - python setup.py bdist_wheel
@@ -18,7 +19,6 @@ install:
 - cd ..
 script:
 - pip install nose
-- if [ "${VERSION:0:3}" != "3.3" ]; then pip install -U numpy; fi
 - mkdir tmp_for_test
 - cd tmp_for_test
 - nosetests pandas
