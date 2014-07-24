@@ -4,6 +4,7 @@ env:
   global: LATEST_TAG=1
   matrix:
   - VERSION=2.7.8 NUMPY_VERSION=1.6.1
+  - VERSION=3.2.5 NUMPY_VERSION=1.7.1
   - VERSION=3.3.5 NUMPY_VERSION=1.7.1
   - VERSION=3.4.1 NUMPY_VERSION=1.7.1
 install:
@@ -19,6 +20,8 @@ install:
 - cd ..
 script:
 - pip install nose
+# When pickling, numpy 1.7.1 read_array_header fails in Python 3.4
+- if [ "${VERSION:0:3}" == "3.4" ]; then pip install -U numpy; fi
 - mkdir tmp_for_test
 - cd tmp_for_test
 - nosetests pandas
