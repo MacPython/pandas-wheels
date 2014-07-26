@@ -14,7 +14,8 @@ install:
 - pip install cython wheel
 - if [ -n "$LATEST_TAG" ]; then checkout_closest_tag pandas; fi
 - cd pandas
-- python setup.py bdist_wheel
+# Need gcc for pandas.json extension
+- CC=gcc CXX=g++ python setup.py bdist_wheel
 - rename_wheels dist
 - pip install dist/*.whl
 - cd ..
