@@ -25,5 +25,4 @@ to which we the MacPython owners have the API key.  The API key is encrypted to
 this exact repo in the ``.travis.yml`` file, so the upload won't work for you
 from another repo.  You can contact the MacPython team to get set up, by using
 the github issues for this project, or use another upload service such as github
-- see for example Jonathan Helmus' `sckit-image wheels builder
-  <https://github.com/jjhelmus/scikit-image-ci-wheel-builder>`_
+-- see for example Jonathan Helmus' `sckit-image wheels builder <https://github.com/jjhelmus/scikit-image-ci-wheel-builder>`_
