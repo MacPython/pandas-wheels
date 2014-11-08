@@ -11,11 +11,12 @@ install:
 - source terryfy/travis_tools.sh
 - get_python_environment macpython $VERSION venv
 - pip install -f $NIPY_WHEELHOUSE numpy==$NUMPY_VERSION
-- pip install cython wheel
+- pip install delocate # for renaming wheels
+- pip install cython
 - if [ -n "$LATEST_TAG" ]; then checkout_closest_tag pandas; fi
 - cd pandas
 - python setup.py bdist_wheel
-- rename_wheels dist
+- delocate-addplat --rm-orig -x 10_9 -x 10_10 dist/*.whl
 - pip install dist/*.whl
 - cd ..
 script:
