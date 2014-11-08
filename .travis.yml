@@ -24,8 +24,7 @@ script:
 - if [ "${VERSION:0:3}" == "3.4" ]; then pip install -U numpy; fi
 - mkdir tmp_for_test
 - cd tmp_for_test
-# Error in test_fred fixed by f6f84db
-- nosetests pandas -e test_fred
+- nosetests pandas -A "not slow and not disabled"
 - cd ..
 before_deploy: cd pandas/dist
 deploy:
