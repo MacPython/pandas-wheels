@@ -37,7 +37,7 @@ script:
   fi
 - mkdir tmp_for_test
 - cd tmp_for_test
-- nosetests pandas -A "not slow and not disabled"
+- nosetests pandas -A "not slow and not disabled" -e "test_data"
 - cd ..
 before_deploy:
 - cd $REPO_DIR/dist
