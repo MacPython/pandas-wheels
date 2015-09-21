@@ -23,6 +23,8 @@ install:
       checkout_commit $REPO_DIR $BUILD_COMMIT;
   fi
 - cd $REPO_DIR
+- export CC=clang
+- export CXX=clang++
 - python setup.py bdist_wheel
 - delocate-addplat --rm-orig -x 10_9 -x 10_10 dist/*.whl
 - pip install dist/*.whl
@@ -31,7 +33,7 @@ script:
 - pip install nose
 # When pickling, numpy 1.7.1 read_array_header fails in Python 3.4
 - if [ -n "$(pyver_ge $VERSION 3.4.0)" ]; then
-  pip install --upgrade numpy;
+  pip install -U -f $NIPY_WHEEL_URL numpy;
   fi
 - mkdir tmp_for_test
 - cd tmp_for_test
