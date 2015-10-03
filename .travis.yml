@@ -4,12 +4,12 @@ env:
   global:
   - BUILD_COMMIT=latest-tag
   - REPO_DIR=pandas
+  - NOSE_ARGS="not slow and not disabled"
   matrix:
   - VERSION=2.7.10 NUMPY_VERSION=1.7.1
-  - VERSION=3.2.5 NUMPY_VERSION=1.7.1
   - VERSION=3.3.5 NUMPY_VERSION=1.7.1
   - VERSION=3.4.3 NUMPY_VERSION=1.7.1
-  - VERSION=3.5.0 NUMPY_VERSION=1.7.1
+  - VERSION=3.5.0 NUMPY_VERSION=1.7.1 NOSE_ARGS="not slow and not network and not disabled"
 install:
 - source terryfy/travis_tools.sh
 - get_python_environment macpython $VERSION venv
@@ -33,11 +33,11 @@ script:
 - pip install nose
 # When pickling, numpy 1.7.1 read_array_header fails in Python 3.4
 - if [ -n "$(pyver_ge $VERSION 3.4.0)" ]; then
-  pip install -U -f $NIPY_WHEEL_URL numpy;
+  pip install -U -f $NIPY_WHEELHOUSE numpy;
   fi
 - mkdir tmp_for_test
 - cd tmp_for_test
-- nosetests pandas -A "not slow and not disabled" -e "test_data"
+- nosetests pandas -A "$NOSE_ARGS"
 - cd ..
 before_deploy:
 - cd $REPO_DIR/dist
