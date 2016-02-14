@@ -2,7 +2,7 @@ language:
 - objective-c
 env:
   global:
-  - BUILD_COMMIT=latest-tag
+  #- BUILD_COMMIT=latest-tag
   - REPO_DIR=pandas
   - NOSE_ARGS="not slow and not disabled"
   matrix:
