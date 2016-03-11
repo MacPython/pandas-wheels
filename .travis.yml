@@ -4,7 +4,7 @@ env:
   global:
   #- BUILD_COMMIT=latest-tag
   - REPO_DIR=pandas
-  - NOSE_ARGS="not slow and not disabled"
+  - NOSE_ARGS="not slow and not network and not disabled"
   matrix:
   - VERSION=2.7.10 NUMPY_VERSION=1.7.1 NUMPY_TEST_VERSION=1.7.1
   - VERSION=3.4.3 NUMPY_VERSION=1.7.1 NUMPY_TEST_VERSION=1.8.1
