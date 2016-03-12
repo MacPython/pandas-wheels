@@ -38,7 +38,7 @@ script:
 # Show pandas versions before tests
 - python -c 'import pandas; pandas.show_versions()'
 # skip tests
-- nosetests pandas/tests/series -A "$NOSE_ARGS"
+#- nosetests pandas/tests/series -A "$NOSE_ARGS"
 - cd ..
 before_deploy:
 - cd $REPO_DIR/dist
