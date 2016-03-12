@@ -24,6 +24,8 @@ install:
 # Need clang to reduce number of warnings for Python 3.5
 - export CC=clang
 - export CXX=clang++
+# remove any old pandas
+- pip uninstall pandas -y
 - python setup.py bdist_wheel
 - delocate-addplat --rm-orig -x 10_9 -x 10_10 dist/*.whl
 - pip install dist/*.whl
@@ -37,7 +39,7 @@ script:
 # Show pandas versions before tests
 - python -c 'import pandas; pandas.show_versions()'
 # skip tests
-#- nosetests pandas -A "$NOSE_ARGS"
+- nosetests pandas -A "$NOSE_ARGS"
 - cd ..
 before_deploy:
 - cd $REPO_DIR/dist
