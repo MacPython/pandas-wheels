@@ -25,5 +25,6 @@ function run_tests {
     fi
     nosetests pandas \
         -A "not slow and not network and not disabled" \
+        -e test_pi_ops_errors -e test_pi_sub_period -e test_abs
         $extra_nose
 }
