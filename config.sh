@@ -25,6 +25,6 @@ function run_tests {
     fi
     nosetests pandas \
         -A "not slow and not network and not disabled" \
-        -e test_abs \
+        -e test_abs -e test_order -e test_argsort -e test_numpy_argsort \
         $extra_nose
 }
