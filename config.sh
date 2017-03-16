@@ -23,8 +23,5 @@ function run_tests {
     if [ $(lex_ver $py_ver) -ge $(lex_ver 3) ]; then
         local extra_nose="-e test_to_latex_filename"
     fi
-    nosetests pandas \
-        -A "not slow and not network and not disabled" \
-        -e test_abs -e test_order -e test_argsort -e test_numpy_argsort \
-        $extra_nose
+    pytest -n 2 --skip-slow --skip-network -m "not single" pandas
 }
