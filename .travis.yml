@@ -94,6 +94,13 @@ matrix:
 
 
 before_install:
+    - if [ -z "$DAILY_COMMIT" ]; then
+          CONTAINER=wheels;
+          UPLOAD_ARGS="--no-update-index";
+      else
+          CONTAINER="pre-release";
+          BUILD_COMMIT=$DAILY_COMMIT;
+      fi
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
     - TEST_DEPENDS="$NP_TEST_DEP nose numexpr"
     - source multibuild/common_utils.sh
