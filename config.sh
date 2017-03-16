@@ -23,5 +23,6 @@ function run_tests {
     #if [ $(lex_ver $py_ver) -ge $(lex_ver 3) ]; then
     #    local extra_nose="-e test_to_latex_filename"
     #fi
-    pytest -m "not single and not slow and not network" pandas
+    #pytest -m "not single and not slow and not network" pandas
+    python -c 'import pandas; pandas.test()'
 }
