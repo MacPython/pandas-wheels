@@ -94,7 +94,7 @@ matrix:
 
 
 before_install:
-    - if [ -z "$DAILY_COMMIT" ]; then
+    - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
           CONTAINER=wheels;
           UPLOAD_ARGS="--no-update-index";
       else
