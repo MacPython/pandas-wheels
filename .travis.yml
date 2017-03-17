@@ -10,7 +10,7 @@ env:
       # Following generated with
       # travis encrypt -r MacPython/pandas-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
       - secure:
-          "FEFwGNflXOjuNjv4f2oOq0m8I3b6OvG5AVV/tH9Fsr6jtPNwQOx7PMOVzISBrWfAueeFubz/IapXBeDP8fRio9RVOcEHBhVJQYeJ46VubOx4X/4pRUD7ehGLxjYK30BGVdNh7z/tL6Xr5+iCuxxmOBgirG0pQVeBZXDchPJaUK0="
+          "FUNzoxHJjaTGlki4FTwW+/JsVfyulQHIAVzoc126SOWXn3noeEtW6xMurYGFSASYBT+dcPafo6HUBMlxG6a8BWjOnT5mjTWQWRYcVG435rSxrbtbZ9RvkL+E+uquDemjCEeesmCD397kYj96ZoQPbLy/B11IlaTAremyoesmA7g="
 
 language: python
 # Default Python version is usually 2.7
