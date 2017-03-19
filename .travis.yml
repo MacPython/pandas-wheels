@@ -1,6 +1,8 @@
 env:
   global:
       - REPO_DIR=pandas
+
+      # on release change this to a version
       - BUILD_COMMIT=master
       - PLAT=x86_64
       - UNICODE_WIDTH=32
@@ -98,12 +100,11 @@ before_install:
       # daily cron
     - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
           CONTAINER="pre-release";
-          UPLOAD_ARGS="--no-update-index";
 
       # push on release
       else
           CONTAINER="wheels";
-          BUILD_COMMIT=master;
+          BUILD_COMMIT=$BUILD_COMMIT;
       fi
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
     - TEST_DEPENDS="$NP_TEST_DEP pytest numexpr"
