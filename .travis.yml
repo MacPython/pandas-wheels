@@ -96,10 +96,8 @@ matrix:
 
 before_install:
     - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-          # daily cron
           CONTAINER="pre-release";
       else
-          # push on release
           CONTAINER="wheels";
           BUILD_COMMIT=$BUILD_COMMIT;
       fi
