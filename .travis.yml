@@ -96,7 +96,6 @@ matrix:
 
 
 before_install:
-
     - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
           # daily cron
           CONTAINER="pre-release";
