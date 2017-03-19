@@ -1,7 +1,6 @@
 env:
   global:
       - REPO_DIR=pandas
-
       # on release change this to a version
       - BUILD_COMMIT=master
       - PLAT=x86_64
