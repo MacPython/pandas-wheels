@@ -94,11 +94,15 @@ matrix:
 
 
 before_install:
+
+      # daily cron
     - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-          CONTAINER=wheels;
-          UPLOAD_ARGS="--no-update-index";
-      else
           CONTAINER="pre-release";
+          UPLOAD_ARGS="--no-update-index";
+
+      # push on release
+      else
+          CONTAINER="wheels";
           BUILD_COMMIT=master;
       fi
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
