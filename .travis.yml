@@ -117,4 +117,4 @@ after_success:
     - python -m wheelhouse_uploader upload --local-folder
           ${TRAVIS_BUILD_DIR}/wheelhouse/
           --no-update-index
-          wheels
+          $CONTAINER
