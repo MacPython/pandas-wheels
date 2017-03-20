@@ -1,9 +1,7 @@
-# daily branch
-
 env:
   global:
       - REPO_DIR=pandas
-      # on release change this to a version
+      # daily branch
       - BUILD_COMMIT=master
       - PLAT=x86_64
       - UNICODE_WIDTH=32
