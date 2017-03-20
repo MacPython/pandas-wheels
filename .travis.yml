@@ -1,3 +1,5 @@
+# daily branch
+
 env:
   global:
       - REPO_DIR=pandas
@@ -95,12 +97,8 @@ matrix:
 
 
 before_install:
-    - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-          CONTAINER="pre-release";
-      else
-          CONTAINER="wheels";
-          BUILD_COMMIT=$BUILD_COMMIT;
-      fi
+    - CONTAINER="pre-release";
+    - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
     - TEST_DEPENDS="$NP_TEST_DEP pytest numexpr"
     - source multibuild/common_utils.sh
