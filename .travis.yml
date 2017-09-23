@@ -69,7 +69,7 @@ before_install:
     - CONTAINER="pre-release";
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest moto"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
