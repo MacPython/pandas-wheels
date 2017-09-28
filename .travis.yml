@@ -68,7 +68,7 @@ matrix:
 before_install:
     - CONTAINER="pre-release";
     - BUILD_COMMIT=$BUILD_COMMIT;
-    - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
+    - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.26.0"
     - TEST_DEPENDS="$NP_TEST_DEP pytest moto"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
