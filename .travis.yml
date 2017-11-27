@@ -5,8 +5,8 @@ env:
       - BUILD_COMMIT=master
       - PLAT=x86_64
       - UNICODE_WIDTH=32
-      - NP_BUILD_DEP="numpy==1.7.1"
-      - NP_TEST_DEP="numpy==1.7.1"
+      - NP_BUILD_DEP="numpy==1.9.3"
+      - NP_TEST_DEP="numpy==1.9.3"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       # Following generated with
       # travis encrypt -r MacPython/pandas-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
@@ -35,19 +35,13 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.5
-        - NP_BUILD_DEP=numpy==1.9.3
-        - NP_TEST_DEP=numpy==1.9.3
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.6
-        - NP_BUILD_DEP=numpy==1.9.3
-        - NP_TEST_DEP=numpy==1.9.3
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
-        - NP_BUILD_DEP=numpy==1.9.3
-        - NP_TEST_DEP=numpy==1.9.3
     - os: osx
       language: generic
       env: MB_PYTHON_VERSION=2.7
@@ -55,14 +49,10 @@ matrix:
       language: generic
       env:
         - MB_PYTHON_VERSION=3.5
-        - NP_BUILD_DEP=numpy==1.9.3
-        - NP_TEST_DEP=numpy==1.9.3
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.6
-        - NP_BUILD_DEP=numpy==1.9.3
-        - NP_TEST_DEP=numpy==1.9.3
 
 
 before_install:
