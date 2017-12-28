@@ -57,6 +57,9 @@ matrix:
 
 
 before_install:
+    # See:
+    # https://github.com/travis-ci/travis-ci/issues/8920#issuecomment-352661024
+    - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
     - CONTAINER="pre-release";
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.26.0"
