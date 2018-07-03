@@ -1,0 +1,34 @@
+diff --git a/tests/tseries/offsets/test_offsets.py b/tests/tseries/offsets/test_offsets.py
+index 5369b1a..b672d10 100644
+--- a/tests/tseries/offsets/test_offsets.py
++++ b/tests/tseries/offsets/test_offsets.py
+@@ -528,7 +528,13 @@ class TestBusinessDay(Base):
+         assert repr(self.offset) == '<BusinessDay>'
+         assert repr(self.offset2) == '<2 * BusinessDays>'
+ 
+-        expected = '<BusinessDay: offset=datetime.timedelta(1)>'
++        # Patch for Python 3.7
++        import sys
++        if sys.version_info >= (3, 7):
++            expected = '<BusinessDay: offset=datetime.timedelta(days=1)>'
++        else:
++            expected = '<BusinessDay: offset=datetime.timedelta(1)>'
++
+         assert repr(self.offset + timedelta(1)) == expected
+ 
+     def test_with_offset(self):
+@@ -1642,7 +1648,13 @@ class TestCustomBusinessDay(Base):
+         assert repr(self.offset) == '<CustomBusinessDay>'
+         assert repr(self.offset2) == '<2 * CustomBusinessDays>'
+ 
+-        expected = '<BusinessDay: offset=datetime.timedelta(1)>'
++        # Patch for Python 3.7
++        import sys
++        if sys.version_info >= (3, 7):
++            expected = '<BusinessDay: offset=datetime.timedelta(days=1)>'
++        else:
++            expected = '<BusinessDay: offset=datetime.timedelta(1)>'
++
+         assert repr(self.offset + timedelta(1)) == expected
+ 
+     def test_with_offset(self):
