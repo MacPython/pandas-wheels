@@ -24,9 +24,5 @@ function run_tests {
     #    local extra_nose="-e test_to_latex_filename"
     #fi
     #pytest -m "not single and not slow and not network" pandas
-    # Patch for Python 3.7 tests
-    PD_INSTALL_DIR=$(dirname $(python -c 'import pandas; print(pandas.__file__)'))
-    PATCH_DIR=$(abspath ..)
-    (cd $PD_INSTALL_DIR && patch -p1 < $PATCH_DIR/py37-tests.patch)
     python -c 'import pandas; pandas.test()'
 }
