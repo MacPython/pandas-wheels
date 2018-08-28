@@ -62,8 +62,8 @@ before_install:
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
     - CONTAINER="pre-release";
     - BUILD_COMMIT=$BUILD_COMMIT;
-    - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.28.2"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest moto"
+    - BUILD_DEPENDS="$NP_BUILD_DEP Cython==0.28.2"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest moto hypothesis"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
