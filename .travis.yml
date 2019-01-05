@@ -85,6 +85,7 @@ before_install:
 
 install:
     # Maybe get and clean and patch source
+    - pip install futures==3.1.1 wheelhouse-uploader
     - clean_code $REPO_DIR $BUILD_COMMIT
     - build_wheel $REPO_DIR $PLAT
 
@@ -93,7 +94,6 @@ script:
 
 after_success:
     # Upload wheels to Rackspace container
-    - pip install wheelhouse-uploader
     - python -m wheelhouse_uploader upload --local-folder
           ${TRAVIS_BUILD_DIR}/wheelhouse/
           --no-update-index
