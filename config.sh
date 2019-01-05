@@ -15,13 +15,6 @@ function build_wheel {
 
 function run_tests {
     # Runs tests on installed distribution from an empty directory
-    python --version
     python -c 'import pandas; pandas.show_versions()'
-    # See: https://travis-ci.org/MacPython/pandas-wheels/jobs/142409427#L657
-    # for ascii decoding error on Python 3, so test skipped here.
-    #local py_ver=$(python --version 2>&1 | awk '{print $2}')
-    #if [ $(lex_ver $py_ver) -ge $(lex_ver 3) ]; then
-    #    local extra_nose="-e test_to_latex_filename"
-    #fi
-    python -c 'import pandas; pandas.test(n=2)'
+    python -c 'import pandas; pandas.test(extra_args=["--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
 }
