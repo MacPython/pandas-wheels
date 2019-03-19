@@ -28,13 +28,6 @@ matrix:
   include:
     - os: linux
       env:
-        - MB_PYTHON_VERSION=2.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-    - os: linux
-      env:
         - MB_PYTHON_VERSION=3.5
     - os: linux
       env:
@@ -48,11 +41,6 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
     - os: osx
       language: generic
       env:
