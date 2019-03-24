@@ -53,6 +53,16 @@ matrix:
         - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
 
 
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_OSX_VER=10.9
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - MB_PYTHON_OSX_VER=10.9
 
 before_install:
     # See:
