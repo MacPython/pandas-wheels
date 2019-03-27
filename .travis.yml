@@ -45,14 +45,22 @@ matrix:
       language: generic
       env:
         - MB_PYTHON_VERSION=3.5
-        - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.6
-        - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
-
-
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - MB_PYTHON_OSX_VER=10.9
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.7
+        - MB_PYTHON_OSX_VER=10.9
+        - NP_BUILD_DEP="numpy==1.14.5"
+        - NP_TEST_DEP="numpy==1.14.5"
 
 before_install:
     # See:
