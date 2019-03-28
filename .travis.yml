@@ -5,8 +5,8 @@ env:
       - BUILD_COMMIT=master
       - PLAT=x86_64
       - UNICODE_WIDTH=32
-      - NP_BUILD_DEP="numpy==1.12.1"
-      - NP_TEST_DEP="numpy==1.12.1"
+      - NP_BUILD_DEP="numpy==1.13.3"
+      - NP_TEST_DEP="numpy==1.13.3"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       # Following generated with
       # travis encrypt -r MacPython/pandas-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
