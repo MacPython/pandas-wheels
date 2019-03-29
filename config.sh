@@ -4,12 +4,7 @@
 function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
-    if [ -n "$IS_OSX" ]; then
-        # Override pandas minimum MACOSX_DEPLOYEMENT_TARGET=10.9 so we can
-        # build for older Pythons
-        # See https://github.com/pandas-dev/pandas/pull/24274
-        export MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-$(get_macpython_osx_ver)}
-    fi
+    :
 }
 
 function build_wheel {
