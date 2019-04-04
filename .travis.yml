@@ -65,7 +65,7 @@ before_install:
     - CONTAINER="pre-release";
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython==0.28.2"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest==4.0.2 pytest-xdist pytest-mock moto hypothesis wheel==0.31.1"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest==4.3.1 pytest-xdist pytest-mock moto hypothesis wheel==0.31.1"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
