@@ -82,7 +82,9 @@ before_install:
     - CONTAINER="wheels";
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython==0.28.2"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest==3.8.2 pytest-xdist pytest-mock moto hypothesis wheel==0.31.1"
+      # binary-only for cryptogrpahy. See https://github.com/pandas-dev/pandas/issues/26589
+      # Moto picks it up, and they don't distribute 32-bit wheels.
+    - TEST_DEPENDS="$NP_TEST_DEP pytest==3.8.2 pytest-xdist pytest-mock moto hypothesis wheel==0.31.1 cryptography --binary-only=cryptography"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
