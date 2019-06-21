@@ -1,12 +1,17 @@
 diff --git a/pandas/tests/test_downstream.py b/pandas/tests/test_downstream.py
-index e76315299..9be107f9c 100644
+index 9fe8b0f95..9be107f9c 100644
 --- a/pandas/tests/test_downstream.py
 +++ b/pandas/tests/test_downstream.py
-@@ -139,7 +139,19 @@ def test_missing_required_dependency():
-     # -S : disable site-packages
-     # -s : disable user site-packages
-     # -E : disable PYTHON* env vars, especially PYTHONPATH
--    call = ['python', '-S', '-s', '-E', '-c', 'import pandas']
+@@ -135,8 +135,23 @@ def test_pyarrow(df):
+ 
+ def test_missing_required_dependency():
+     # GH 23868
+-    # use the -S flag to disable site-packages
+-    call = ['python', '-S', '-c', 'import pandas']
++    # To ensure proper isolation, we pass these flags
++    # -S : disable site-packages
++    # -s : disable user site-packages
++    # -E : disable PYTHON* env vars, especially PYTHONPATH
 +    # And, that's apparently not enough, so we give up.
 +    # https://github.com/MacPython/pandas-wheels/pull/50
 +    try:
