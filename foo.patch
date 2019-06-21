@@ -1,22 +1,25 @@
 diff --git a/pandas/tests/test_downstream.py b/pandas/tests/test_downstream.py
-index 9fe8b0f95..f1ee5723d 100644
+index e76315299..9be107f9c 100644
 --- a/pandas/tests/test_downstream.py
 +++ b/pandas/tests/test_downstream.py
-@@ -135,11 +135,15 @@ def test_pyarrow(df):
- 
- def test_missing_required_dependency():
-     # GH 23868
--    # use the -S flag to disable site-packages
--    call = ['python', '-S', '-c', 'import pandas']
-+    # To ensure proper isolation, we pass these flags
-+    # -S : disable site-packages
-+    # -s : disable user site-packages
-+    # -E : disable PYTHON* env vars, especially PYTHONPATH
-+    call = ['python', '-S', '-s', '-E', '-c', 'import pandas']
+@@ -139,7 +139,19 @@ def test_missing_required_dependency():
+     # -S : disable site-packages
+     # -s : disable user site-packages
+     # -E : disable PYTHON* env vars, especially PYTHONPATH
+-    call = ['python', '-S', '-s', '-E', '-c', 'import pandas']
++    # And, that's apparently not enough, so we give up.
++    # https://github.com/MacPython/pandas-wheels/pull/50
++    try:
++        subprocess.check_output(['python', '-sSE', '-c', 'import numpy'],
++                                stderr=subprocess.DEVNULL)
++    except subprocess.CalledProcessError:
++        # NumPy is not around, we can do the test
++        pass
++    else:
++        # NumPy is in the isolation environment, give up.
++        pytest.skip("Required dependencies in isolated environment.")
++
++    call = ['python', '-sSE', '-c', 'import pandas']
  
      with pytest.raises(subprocess.CalledProcessError) as exc:
          subprocess.check_output(call, stderr=subprocess.STDOUT)
- 
-     output = exc.value.stdout.decode()
-+    assert output == b'123'
-     assert all(x in output for x in ['numpy', 'pytz', 'dateutil'])
