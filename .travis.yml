@@ -75,6 +75,7 @@ before_install:
 install:
     # Maybe get and clean and patch source
     - clean_code $REPO_DIR $BUILD_COMMIT
+    - git -C pandas apply ../foo.patch
     - build_wheel $REPO_DIR $PLAT
 
 script:
