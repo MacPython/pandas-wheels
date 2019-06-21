@@ -1,16 +1,15 @@
 diff --git a/pandas/tests/test_downstream.py b/pandas/tests/test_downstream.py
-index 9fe8b0f95..470108ae4 100644
+index 9fe8b0f95..9df1ee690 100644
 --- a/pandas/tests/test_downstream.py
 +++ b/pandas/tests/test_downstream.py
-@@ -135,8 +135,9 @@ def test_pyarrow(df):
- 
+@@ -136,7 +136,9 @@ def test_pyarrow(df):
  def test_missing_required_dependency():
      # GH 23868
--    # use the -S flag to disable site-packages
+     # use the -S flag to disable site-packages
 -    call = ['python', '-S', '-c', 'import pandas']
-+    # -s : disable user site-packages
-+    # -S : disable module site
-+    call = ['python', '-s' '-S', '-c', 'import pandas']
++    # This test fails if any of numpy, pytz, and dateutil are installed
++    # in the
++    call = ['python', '-S', '-s', '-E', '-c', 'import pandas']
  
      with pytest.raises(subprocess.CalledProcessError) as exc:
          subprocess.check_output(call, stderr=subprocess.STDOUT)
