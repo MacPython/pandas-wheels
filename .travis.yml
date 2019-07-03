@@ -5,8 +5,9 @@ env:
       - BUILD_COMMIT=v0.24.2
       - PLAT=x86_64
       - UNICODE_WIDTH=32
-      - NP_BUILD_DEP="numpy==1.12.1"
-      - NP_TEST_DEP="numpy==1.12.1"
+      - MB_PYTHON_OSX_VER=10.9
+      - NP_BUILD_DEP="numpy==1.13.3"
+      - NP_TEST_DEP="numpy==1.13.3"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       # Following generated with
       # travis encrypt -r MacPython/pandas-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
@@ -28,63 +29,45 @@ matrix:
   include:
     - os: linux
       env:
+        - MB_PYTHON_VERSION=3.5
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.6
+    - os: linux
+      env:
         - MB_PYTHON_VERSION=3.7
         - NP_BUILD_DEP="numpy==1.14.5"
         - NP_TEST_DEP="numpy==1.14.5"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - PLAT=i686
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_OSX_VER=10.6 # no python.org 10.9 builds for 3.5
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.6
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.7
         - NP_BUILD_DEP="numpy==1.14.5"
         - NP_TEST_DEP="numpy==1.14.5"
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.5
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.5
-        - PLAT=i686
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=i686
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.5
-        - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - MACOSX_DEPLOYMENT_TARGET=10.6 # since pandas PR24274, mac builds default to 10.9
-
 
 before_install:
     # See:
     # https://github.com/travis-ci/travis-ci/issues/8920#issuecomment-352661024
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
-    - CONTAINER="wheels";
+    - CONTAINER="wheels";  # pre-relesae
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP Cython==0.28.2"
       # binary-only for cryptogrpahy. See https://github.com/pandas-dev/pandas/issues/26589
       # Moto picks it up, and they don't distribute 32-bit wheels.
-    - TEST_DEPENDS="$NP_TEST_DEP pytest==3.8.2 pytest-xdist pytest-mock moto hypothesis wheel==0.31.1 cryptography --only-binary=cryptography"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest>=4.0.2 pytest-xdist pytest-mock moto hypothesis>=3.58 wheel==0.31.1 cryptography --only-binary=cryptography"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install

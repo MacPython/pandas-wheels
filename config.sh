@@ -4,7 +4,15 @@
 function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
-    :
+    if [ -n "$IS_OSX" ]; then
+        # Override pandas' default minimum MACOSX_DEPLOYEMENT_TARGET=10.9,
+        # so we can build for older Pythons if we really want to.
+        # See https://github.com/pandas-dev/pandas/pull/24274
+        local _plat=$(get_distutils_platform)
+        if [[ -z $MACOSX_DEPLOYMENT_TARGET && "$_plat" =~ macosx-(10\.[0-9]+)-.* ]]; then
+            export MACOSX_DEPLOYMENT_TARGET=${BASH_REMATCH[1]}
+        fi
+    fi
 }
 
 function build_wheel {
@@ -17,7 +25,5 @@ function run_tests {
     # Runs tests on installed distribution from an empty directory
     export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 4294967295))')
     python -c 'import pandas; pandas.show_versions()'
-    # --deselect for 0.24.x
-    # https://travis-ci.org/MacPython/pandas-wheels/builds/505474702
-    python -c 'import pandas; pandas.test(extra_args=["--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k -test_numpy_ufuncs", "-k -test_write_fspath_all"])' || true
+    python -c 'import pandas; pandas.test(extra_args=["--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
 }
