@@ -40,6 +40,10 @@ matrix:
         - NP_TEST_DEP="numpy==1.14.5"
     - os: linux
       env:
+         - MB_PYTHON_VERSION=3.5
+         - PLAT=i686
+    - os: linux
+      env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
     - os: osx
