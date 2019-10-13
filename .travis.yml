@@ -5,7 +5,6 @@ env:
       - BUILD_COMMIT=v0.25.1
       - PLAT=x86_64
       - UNICODE_WIDTH=32
-      # TODO make this the default in multibuild
       - MB_PYTHON_OSX_VER=10.9
       - NP_BUILD_DEP="numpy==1.13.3"
       - NP_TEST_DEP="numpy==1.13.3"
@@ -78,7 +77,6 @@ before_install:
     - source multibuild/travis_steps.sh
     - before_install
       # install latest pip as workaround for https://github.com/pypa/packaging-problems/issues/134 with Python 3.5
-      # TODO: push this upstream to multibuild
     - curl https://bootstrap.pypa.io/get-pip.py | python
 
 install:
