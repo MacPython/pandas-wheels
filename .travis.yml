@@ -71,7 +71,7 @@ before_install:
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
     - CONTAINER="pre-release";
     - BUILD_COMMIT=$BUILD_COMMIT;
-    - BUILD_DEPENDS="$NP_BUILD_DEP Cython==0.28.2"
+    - BUILD_DEPENDS="$NP_BUILD_DEP Cython"
       # binary-only for cryptogrpahy. See https://github.com/pandas-dev/pandas/issues/26589
       # Moto picks it up, and they don't distribute 32-bit wheels.
     - TEST_DEPENDS="$NP_TEST_DEP pytest>=4.0.2 pytest-xdist pytest-mock moto hypothesis>=3.58 wheel==0.31.1 cryptography --only-binary=cryptography"
