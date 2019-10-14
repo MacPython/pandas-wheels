@@ -62,7 +62,7 @@ matrix:
       language: generic
       env:
         - MB_PYTHON_VERSION=3.7
-        - NP_BUILD_DEP="numpy==1.14.5"
+        - NP_BUILD_DEP="numpy==1.18.0.dev0"
         - NP_TEST_DEP="numpy==1.18.0.dev0"
 
 before_install:
