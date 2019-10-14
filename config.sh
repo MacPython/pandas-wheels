@@ -24,8 +24,11 @@ function build_wheel {
 
 function pip_opts {
     # Add --pre for 3.8 build until NumPy has a 3.8-compatible release.
-    # [ -n "$MANYLINUX_URL" ] && echo "--find-links $MANYLINUX_URL --pre"
-    echo "--pre"
+    if [-n "$MANYLINUX_URL" ]; then
+        echo "--find-links $MANYLINUX_URL --find-links='https://7933911d6844c6c53a7d-47bd50c35cd79bd838daf386af554a83.ssl.cf2.rackcdn.com' --pre"
+    else
+        echo "--find-links='https://7933911d6844c6c53a7d-47bd50c35cd79bd838daf386af554a83.ssl.cf2.rackcdn.com' --pre"
+    fi
 }
 
 
