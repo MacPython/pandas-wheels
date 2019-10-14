@@ -24,7 +24,8 @@ function build_wheel {
 
 function pip_opts {
     # Add --pre for 3.8 build until NumPy has a 3.8-compatible release.
-    [ -n "$MANYLINUX_URL" ] && echo "--find-links $MANYLINUX_URL --pre"
+    # [ -n "$MANYLINUX_URL" ] && echo "--find-links $MANYLINUX_URL --pre"
+    echo "--pre"
 }
 
 
