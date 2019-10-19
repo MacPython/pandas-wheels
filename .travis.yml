@@ -2,7 +2,7 @@ env:
   global:
       - REPO_DIR=pandas
       # on release change this to a version
-      - BUILD_COMMIT=0.25.x
+      - BUILD_COMMIT=v0.25.2
       - PLAT=x86_64
       - UNICODE_WIDTH=32
       - MB_PYTHON_OSX_VER=10.9
@@ -30,15 +30,15 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.8
-        - NP_BUILD_DEP="numpy==1.18.0.dev0"
-        - NP_TEST_DEP="numpy==1.18.0.dev0"
+        - NP_BUILD_DEP="numpy==1.17.3"
+        - NP_TEST_DEP="numpy==1.17.3"
 
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.8
-        - NP_BUILD_DEP="numpy==1.18.0.dev0"
-        - NP_TEST_DEP="numpy==1.18.0.dev0"
+        - NP_BUILD_DEP="numpy==1.17.3"
+        - NP_TEST_DEP="numpy==1.17.3"
 
     - os: linux
       env:
