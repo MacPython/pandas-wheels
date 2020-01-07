@@ -30,12 +30,16 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.8
-        - NP_BUILD_DEP="numpy==1.18.0.dev0"
-        - NP_TEST_DEP="numpy==1.18.0.dev0"
+        - NP_BUILD_DEP="numpy==1.17.3"
+        - NP_TEST_DEP="numpy==1.17.3"
 
-    - os: linux
+    - os: osx
+      language: generic
       env:
-        - MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_VERSION=3.8
+        - NP_BUILD_DEP="numpy==1.17.3"
+        - NP_TEST_DEP="numpy==1.17.3"
+
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.6
@@ -48,14 +52,6 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.5
-        - MB_PYTHON_OSX_VER=10.6 # no python.org 10.9 builds for 3.5
-        # WAR for setup_requires TLS issue with Python 3.5 on macOS
-        # see https://github.com/pandas-dev/pandas/issues/28954 
-        - EXTRA_BUILD_DEP="setuptools_scm"
     - os: osx
       language: generic
       env:
