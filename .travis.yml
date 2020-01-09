@@ -2,7 +2,7 @@ env:
   global:
       - REPO_DIR=pandas
       # on release change this to a version
-      - BUILD_COMMIT=v0.25.3
+      - BUILD_COMMIT=v1.0.0rc0
       - PLAT=x86_64
       - UNICODE_WIDTH=32
       - MB_PYTHON_OSX_VER=10.9
@@ -42,9 +42,6 @@ matrix:
 
     - os: linux
       env:
-        - MB_PYTHON_VERSION=3.5
-    - os: linux
-      env:
         - MB_PYTHON_VERSION=3.6
     - os: linux
       env:
@@ -53,20 +50,8 @@ matrix:
         - NP_TEST_DEP="numpy==1.14.5"
     - os: linux
       env:
-         - MB_PYTHON_VERSION=3.5
-         - PLAT=i686
-    - os: linux
-      env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.5
-        - MB_PYTHON_OSX_VER=10.6 # no python.org 10.9 builds for 3.5
-        # WAR for setup_requires TLS issue with Python 3.5 on macOS
-        # see https://github.com/pandas-dev/pandas/issues/28954 
-        - EXTRA_BUILD_DEP="setuptools_scm"
     - os: osx
       language: generic
       env:
