@@ -26,5 +26,5 @@ function run_tests {
     # Runs tests on installed distribution from an empty directory
     export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 4294967295))')
     python -c 'import pandas; pandas.show_versions()'
-    python -c 'import pandas; pandas.test(extra_args=["--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
+    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
 }
