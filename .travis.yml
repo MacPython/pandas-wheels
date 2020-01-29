@@ -2,7 +2,7 @@ env:
   global:
       - REPO_DIR=pandas
       # on release change this to a version
-      - BUILD_COMMIT=v1.0.0rc0
+      - BUILD_COMMIT=v1.0.0
       - PLAT=x86_64
       - UNICODE_WIDTH=32
       - MB_PYTHON_OSX_VER=10.9
