@@ -71,7 +71,6 @@ jobs:
           pip install twine
           pushd pandas
           python setup.py build
-          python ../appveyor/vendor_vcomp140.py
           python setup.py bdist_wheel
           ls dist
           twine check dist/*
