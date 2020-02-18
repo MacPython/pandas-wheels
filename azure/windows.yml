@@ -8,7 +8,7 @@ jobs:
     pool:
       vmImage: ${{ parameters.vmImage }}
     variables:
-      BUILD_COMMIT: "1.0.1"
+      BUILD_COMMIT: "v1.0.1"
       SKLEARN_SKIP_NETWORK_TESTS: "1"
       NP_BUILD_DEP: "1.13.3"
       CYTHON_BUILD_DEP: "0.29.13"
@@ -82,7 +82,7 @@ jobs:
           set -e
           source extra_functions.sh
           setup_test_venv
-          pip install pandas/dist/scikit_learn-*.whl
+          pip install pandas/dist/pandas-*.whl
           mkdir $TEST_DIR
           pushd $TEST_DIR
           pytest -rs -l --junitxml=$JUNITXML --pyargs sklearn
@@ -129,8 +129,8 @@ jobs:
           set -e
           # The --force option forces a replacement if the remote file already
           # exists.
-          ls pandas/dist/scikit_learn-*.whl
-          anaconda -t $TOKEN upload --force -u $ANACONDA_ORG pandas/dist/scikit_learn-*.whl
+          ls pandas/dist/pandas-*.whl
+          anaconda -t $TOKEN upload --force -u $ANACONDA_ORG pandas/dist/pandas-*.whl
           echo "PyPI-style index: https://pypi.anaconda.org/$ANACONDA_ORG/simple"
         displayName: Upload to anaconda.org (only if secret token is retrieved)
         condition: ne(variables['TOKEN'], '')
