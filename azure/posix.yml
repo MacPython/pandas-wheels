@@ -110,7 +110,7 @@ jobs:
             ANACONDA_ORG="scipy-wheels-nightly"
             TOKEN="$PANDAS_NIGHTLY_UPLOAD_TOKEN"
           else
-            ANACONDA_ORG="pandas-wheels-staging"
+            ANACONDA_ORG="multibuild-wheels-staging"
             TOKEN="$PANDAS_STAGING_UPLOAD_TOKEN"
           fi
           if [ "$TOKEN" == "" ]; then
