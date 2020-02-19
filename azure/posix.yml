@@ -61,7 +61,7 @@ jobs:
 
       - bash: |
           set -e
-          pip install virtualenv
+          pip install virtualenv wheel
           BUILD_DEPENDS="$NP_BUILD_DEP $CYTHON_BUILD_DEP"
 
           source multibuild/common_utils.sh
