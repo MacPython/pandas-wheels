@@ -83,7 +83,6 @@ jobs:
           setup_test_venv
           pip install pandas/dist/pandas-*.whl
           run_tests
-          popd
           teardown_test_venv
         displayName: Install wheel and test
         condition: eq(variables['SKIP_BUILD'], 'false')
