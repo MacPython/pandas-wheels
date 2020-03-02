@@ -79,9 +79,10 @@ jobs:
       - bash: |
           set -e
           source extra_functions.sh
+          source config.sh
           setup_test_venv
           pip install pandas/dist/pandas-*.whl
-          python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
+          run_tests
           popd
           teardown_test_venv
         displayName: Install wheel and test
