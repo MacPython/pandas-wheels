@@ -66,7 +66,7 @@ before_install:
     - CONTAINER="wheels";  # pre-relesae
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP $EXTRA_BUILD_DEP Cython"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest>=4.0.2 pytest-xdist hypothesis"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest==5.3.5 pytest-xdist hypothesis"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
