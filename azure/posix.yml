@@ -87,13 +87,6 @@ jobs:
         displayName: Install wheel and test
         condition: eq(variables['SKIP_BUILD'], 'false')
 
-      - task: PublishTestResults@2
-        inputs:
-          testResultsFiles: '$(TEST_DIR)/$(JUNITXML)'
-          testRunTitle: ${{ format('{0}-$(Agent.JobName)', parameters.name) }}
-        displayName: 'Publish Test Results'
-        condition: eq(variables['SKIP_BUILD'], 'false')
-
       - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
           sudo chown -R $USER $CONDA
