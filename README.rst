@@ -1,3 +1,7 @@
+.. image:: https://dev.azure.com/pandas-dev/pandas-wheels/_apis/build/status/MacPython.pandas-wheels?branchName=master
+    :target: https://dev.azure.com/pandas-dev/pandas-wheels/_build/latest?definitionId=2&branchName=master
+
+
 ####################################
 Building and uploading pandas wheels
 ####################################
