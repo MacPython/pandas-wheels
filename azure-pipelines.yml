@@ -7,6 +7,12 @@ schedules:
     - master
   always: true
 
+trigger:
+- master
+
+pr:
+- master 
+
 jobs:
   - template: azure/windows.yml
     parameters:
