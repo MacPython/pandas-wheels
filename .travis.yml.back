@@ -2,7 +2,7 @@ env:
   global:
       - REPO_DIR=pandas
       # on release change this to a version
-      - BUILD_COMMIT=v1.0.1
+      - BUILD_COMMIT=v1.0.2
       - PLAT=x86_64
       - UNICODE_WIDTH=32
       - MB_PYTHON_OSX_VER=10.9
@@ -17,15 +17,11 @@ env:
 language: python
 # Default Python version is usually 2.7
 python: 3.5
-sudo: required
 dist: trusty
 group: deprecated-2017Q4
 services: docker
 
-matrix:
-  exclude:
-      # Exclude the default Python 3.5 build
-      - python: 3.5
+jobs:
   include:
     - os: linux
       env:
@@ -70,7 +66,7 @@ before_install:
     - CONTAINER="wheels";  # pre-relesae
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP $EXTRA_BUILD_DEP Cython"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest>=4.0.2 pytest-xdist hypothesis"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest==5.3.5 pytest-xdist hypothesis"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
