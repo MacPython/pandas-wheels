@@ -71,6 +71,8 @@ jobs:
           pushd pandas
           python setup.py build
           python setup.py bdist_wheel
+          copy /Y /B "C:\windows\system32\MSVCP140.DLL" pandas\_libs\window
+          copy /Y /B "C:\windows\system32\CONCRT140.DLL" pandas\_libs\window
           ls dist
           twine check dist/*
           popd
