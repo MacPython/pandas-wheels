@@ -12,7 +12,7 @@ jobs:
       BUILD_COMMIT: "v1.0.3"
       PLAT: "x86_64"
       NP_BUILD_DEP: "numpy==1.13.3"
-      CYTHON_BUILD_DEP: "cython==0.29.13"
+      CYTHON_BUILD_DEP: "cython==0.29.16"
       NIGHTLY_BUILD_COMMIT: "master"
       NIGHTLY_BUILD: "false"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
