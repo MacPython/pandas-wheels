@@ -71,7 +71,7 @@ jobs:
           pushd pandas
           python setup.py build
           python setup.py bdist_wheel
-          ls "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\"
+          ls "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/HostX86/x64/"
           ls /usr/
           cp /mnt/c/windows/system32/MSVCP140.DLL pandas\_libs\window
           cp /mnt/c/windows/system32/CONCRT140.DLL pandas\_libs\window
