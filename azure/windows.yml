@@ -15,7 +15,6 @@ jobs:
       NIGHTLY_BUILD: "false"
       PYTHON_ARCH: "x64"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
-      JUNITXML: "test-data.xml"
       TEST_DIR: '$(Agent.WorkFolder)/tmp_for_test'
     strategy:
       matrix:
