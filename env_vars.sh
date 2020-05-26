@@ -14,5 +14,5 @@ if [ "$(uname)" != "Darwin" ]; then
     STRIP_FLAGS=""
 fi
 # For verbosity: report where each command came from
-export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }
+export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 set -x
