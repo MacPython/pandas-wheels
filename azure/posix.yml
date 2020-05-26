@@ -17,6 +17,8 @@ jobs:
       NIGHTLY_BUILD: "true"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
       TEST_DIR: "tmp_for_test"
+      # CFLAGS override for https://github.com/pandas-dev/pandas/issues/34114
+      CFLAGS: "-Wno-error=maybe-uninitialized"
     strategy:
       matrix:
         ${{ insert }}: ${{ parameters.matrix }}
@@ -71,8 +73,7 @@ jobs:
           before_install
 
           clean_code $REPO_DIR $BUILD_COMMIT
-          # CFLAGS override for https://github.com/pandas-dev/pandas/issues/34114
-          CFLAGS=-Wno-error=maybe-uninitialized build_wheel $REPO_DIR $PLAT
+          build_wheel $REPO_DIR $PLAT
         displayName: Build wheel
         condition: eq(variables['SKIP_BUILD'], 'false')
 

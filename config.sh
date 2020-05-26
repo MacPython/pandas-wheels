@@ -18,7 +18,6 @@ function pre_build {
 function build_wheel {
     # Override common_utils build_wheel function to fix version error
     # Version error due to versioneer inside submodule
-    # CFLAGS override for https://github.com/pandas-dev/pandas/issues/34114
     build_bdist_wheel $@
 }
 
