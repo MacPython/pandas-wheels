@@ -17,8 +17,6 @@ jobs:
       NIGHTLY_BUILD: "true"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
       TEST_DIR: "tmp_for_test"
-      # CFLAGS override for https://github.com/pandas-dev/pandas/issues/34114
-      CFLAGS: "-Wno-error=maybe-uninitialized -Wno-error=sign-compare"
     strategy:
       matrix:
         ${{ insert }}: ${{ parameters.matrix }}
