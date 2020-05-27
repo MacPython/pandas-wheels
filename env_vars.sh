@@ -2,7 +2,9 @@
 # Environment variables for build
 MACOSX_DEPLOYMENT_TARGET=10.9
 # CFLAGS override for https://github.com/pandas-dev/pandas/issues/34114
-CFLAGS="-ansi -Wno-error=maybe-uninitialized -Wno-error=sign-compare -Wno-error=return-type"
+if [ "$(uname)" == "Linux" ]; then
+    CFLAGS="-ansi -Wno-error=maybe-uninitialized -Wno-error=sign-compare -Wno-error=return-type"
+fi
 # Macos's linker doesn't support stripping symbols
 if [ "$(uname)" != "Darwin" ]; then
     LDFLAGS="-Wl,--strip-debug"
