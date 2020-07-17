@@ -31,5 +31,5 @@ function run_tests {
     python -c 'import pandas; pandas.show_versions()'
     # Skip test_maybe_promote_int_with_int: https://github.com/pandas-dev/pandas/issues/31856
     # test_missing_required_dependencies: https://github.com/pandas-dev/pandas/issues/33999
-    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_maybe_promote_int_with_int and not test_missing_required_dependency"])'
+    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_maybe_promote_int_with_int and not test_missing_required_dependency and not TestPandasContainer"])'
 }
