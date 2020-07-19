@@ -8,7 +8,7 @@ jobs:
     pool:
       vmImage: ${{ parameters.vmImage }}
     variables:
-      BUILD_COMMIT: "v1.0.5"
+      BUILD_COMMIT: "v1.1.0rc0"
       NP_BUILD_DEP: "1.13.3"
       CYTHON_BUILD_DEP: "0.29.16"
       NIGHTLY_BUILD_COMMIT: "master"
@@ -68,10 +68,10 @@ jobs:
           pip install --timeout=60 $TEST_DEPENDS Cython==$CYTHON_BUILD_DEP
           pip install twine wheel
           pushd pandas
-          python setup.py build
-          python setup.py bdist_wheel
           cp "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Redist/MSVC/14.16.27012/$PYTHON_ARCH/Microsoft.VC141.CRT/msvcp140.dll" pandas/_libs/window
           cp "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Redist/MSVC/14.16.27012/$PYTHON_ARCH/Microsoft.VC141.CRT/concrt140.dll" pandas/_libs/window
+          python setup.py build
+          python setup.py bdist_wheel
           ls dist
           twine check dist/*
           popd
