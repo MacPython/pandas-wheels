@@ -33,5 +33,5 @@ function run_tests {
     # Skip test_maybe_promote_int_with_int: https://github.com/pandas-dev/pandas/issues/31856
     # test_missing_required_dependencies: https://github.com/pandas-dev/pandas/issues/33999
     # TestPandasContainer for 3.7.0 failure
-    python -c 'import sys; import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_maybe_promote_int_with_int and not test_missing_required_dependency and not test_file_descriptor_leak and not test_groupby_rolling_center_center and not test_groupby_subselect_rolling and not test_groupby_rolling_custom_indexer and not test_groupby_rolling_subset_with_closed and not test_groupby_subset_rolling_subset_with_closed"]) if sys.version_info[:2] != (3, 7) else None'
+    python -c 'import sys; import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_maybe_promote_int_with_int and not test_missing_required_dependency and not test_groupby_rolling_center_center and not test_groupby_subselect_rolling and not test_groupby_rolling_custom_indexer and not test_groupby_rolling_subset_with_closed and not test_groupby_subset_rolling_subset_with_closed"]) if sys.version_info[:2] != (3, 7) else None'
 }
