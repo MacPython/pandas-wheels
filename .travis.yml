@@ -1,0 +1,90 @@
+arch: arm64-graviton2
+dist: focal
+virt: vm
+group: edge
+language: python
+services: docker
+env:
+  global:
+      - REPO_DIR=pandas
+      # on release change this to a version
+      - BUILD_COMMIT="v1.1.2"
+      - UNICODE_WIDTH=32
+      - PLAT=aarch64
+      - NP_BUILD_DEP="numpy==1.13.3"
+      - NP_TEST_DEP="numpy==1.13.3"
+      - CYTHON_BUILD_DEP="cython==0.29.16"
+      - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
+      - TEST_DEPENDS="pytest pytest-xdist hypothesis"
+      - TEST_DIR="tmp_for_test"
+      - MB_ML_VER=2014
+      - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+
+jobs:
+  include:
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - NP_BUILD_DEP="numpy==1.13.3"
+        - NP_TEST_DEP="numpy==1.13.3"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.7
+        - NP_BUILD_DEP="numpy==1.14.5"
+        - NP_TEST_DEP="numpy==1.14.5"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.8
+        - NP_BUILD_DEP="numpy==1.19.1"
+        - NP_TEST_DEP="numpy==1.19.1"
+before_install:
+    # See:
+    # https://github.com/travis-ci/travis-ci/issues/8920#issuecomment-352661024
+    - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
+    - CONTAINER="wheels";
+    - BUILD_COMMIT=$BUILD_COMMIT;
+    - BUILD_DEPENDS="$NP_BUILD_DEP $EXTRA_BUILD_DEP Cython"
+    - TEST_DEPENDS="$NP_TEST_DEP pytest pytest-xdist hypothesis"
+    - source multibuild/common_utils.sh
+    - source multibuild/travis_steps.sh
+    - source extra_functions.sh
+    - before_install
+
+install:
+    # Maybe get and clean and patch source
+    - clean_code $REPO_DIR $BUILD_COMMIT
+    - build_wheel $REPO_DIR $PLAT
+
+script:
+    - source multibuild/common_utils.sh
+    - source multibuild/travis_steps.sh
+    - source extra_functions.sh
+    - setup_test_venv
+    - install_run $PLAT
+    - teardown_test_venv
+
+after_success:
+    # Taken from Macpython/scipy-wheels
+    # trigger an upload to the shared ecosystem
+    # infrastructure at: https://anaconda.org/scipy-wheels-nightly
+    # for cron jobs only (restricted to master branch once
+    # per week)
+    # PANDAS_NIGHTLY_UPLOAD_TOKEN is a secret token
+    # used in Travis CI config, originally
+    # generated at anaconda.org for scipy-wheels-nightly
+    - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+          source extra_functions.sh;
+          for f in wheelhouse/*.whl; do rename_wheel $f; done;
+          ANACONDA_ORG="scipy-wheels-nightly";
+          pip install git+https://github.com/Anaconda-Server/anaconda-client;
+          anaconda -t ${PANDAS_NIGHTLY_UPLOAD_TOKEN} upload --force -u ${ANACONDA_ORG} ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl;
+      fi
+    # for merges (push events) we use the staging area instead;
+    # PANDAS_STAGING_UPLOAD_TOKEN is a secret token used in Travis
+    # CI config, originally generated at anaconda.org for
+    # multibuild-wheels-staging
+    - if [ "$TRAVIS_EVENT_TYPE" == "push" ]; then
+          ANACONDA_ORG="multibuild-wheels-staging";
+          pip install git+https://github.com/Anaconda-Server/anaconda-client;
+          anaconda -t ${PANDAS_STAGING_UPLOAD_TOKEN} upload --force -u ${ANACONDA_ORG} ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl;
+      fi
