@@ -12,6 +12,8 @@ function setup_test_venv {
         # Note: the idiom "python -m pip install ..." is necessary to upgrade
         # pip itself on Windows. Otherwise one would get a permission error on
         # pip.exe.
+        PYTHON_EXE=python
+        PIP_CMD="$PYTHON_EXE -m pip"
         python -m pip install --upgrade pip wheel
         if [ "$TEST_DEPENDS" != "" ]; then
             pip install $TEST_DEPENDS
@@ -27,3 +29,7 @@ function teardown_test_venv {
         fi
     fi
 } 
+
+# Work around bug in multibuild. This is copied from NumPy-wheels
+# https://github.com/MacPython/numpy-wheels/blob/34c2cdaca98d020081f5d03983d1c78b3b2a828c/extra_functions.sh#L50
+if [ ! -o PIP_CMD ]; then PIP_CMD="$PYTHON_EXE -m pip"; fi
