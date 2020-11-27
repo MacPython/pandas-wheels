@@ -26,7 +26,7 @@ function run_tests {
     # Runs tests on installed distribution from an empty directory
     export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 4294967295))')
     echo $PATH
-    echo ${MB_PYTHNO_VERSION}
+    echo ${MB_PYTHON_VERSION}
     which -a python
     pip list
     python -c 'import pandas; pandas.show_versions()'
