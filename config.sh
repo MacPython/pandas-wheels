@@ -30,6 +30,5 @@ function run_tests {
     which -a python
     pip list
     python -c 'import pandas; pandas.show_versions()'
-    # Skip test_maybe_promote_int_with_int: https://github.com/pandas-dev/pandas/issues/31856
-    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_maybe_promote_int_with_int"])'
+    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
 }
