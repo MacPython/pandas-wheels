@@ -26,10 +26,9 @@ function run_tests {
     # Runs tests on installed distribution from an empty directory
     export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 4294967295))')
     echo $PATH
-    echo ${MB_PYTHNO_VERSION}
+    echo ${MB_PYTHON_VERSION}
     which -a python
     pip list
     python -c 'import pandas; pandas.show_versions()'
-    # TestPandasContainer for 3.7.0 failure
-    python -c 'import sys; import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_file_descriptor_leak"]) if sys.version_info[:2] != (3, 7) else None'
+    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2"])'
 }
