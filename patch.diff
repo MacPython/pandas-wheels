@@ -1,0 +1,30 @@
+diff --git a/setup.py b/setup.py
+index 915847c293..1c5b054d88 100755
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,7 @@ import platform
+ import shutil
+ import sys
+ 
+-import pkg_resources
++# import pkg_resources
+ from setuptools import Command, find_packages, setup
+ 
+ # versioning
+@@ -519,11 +519,11 @@ def maybe_cythonize(extensions, *args, **kwargs):
+             )
+         raise RuntimeError("Cannot cythonize without Cython installed.")
+ 
+-    numpy_incl = pkg_resources.resource_filename("numpy", "core/include")
+-    # TODO: Is this really necessary here?
+-    for ext in extensions:
+-        if hasattr(ext, "include_dirs") and numpy_incl not in ext.include_dirs:
+-            ext.include_dirs.append(numpy_incl)
++    # numpy_incl = pkg_resources.resource_filename("numpy", "core/include")
++    # # TODO: Is this really necessary here?
++    # for ext in extensions:
++    #     if hasattr(ext, "include_dirs") and numpy_incl not in ext.include_dirs:
++    #         ext.include_dirs.append(numpy_incl)
+ 
+     # reuse any parallel arguments provided for compilation to cythonize
+     parser = argparse.ArgumentParser()
