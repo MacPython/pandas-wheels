@@ -19,23 +19,15 @@ jobs:
       name: windows
       vmImage: vs2017-win2016
       matrix:
-        # py_3.6_32:
-        #   PYTHON_VERSION: "3.6"
-        #   PYTHON_ARCH: "x86"
-        #   NP_BUILD_DEP: "1.13.3"
-        # py_3.6_64:
-        #   PYTHON_VERSION: "3.6"
-        #   PYTHON_ARCH: "x64"
-        #   NP_BUILD_DEP: "1.13.3"
         py_3.7_32:
           PYTHON_VERSION: "3.7"
           PYTHON_ARCH: "x86"
-          NP_BUILD_DEP: "1.15.4"
+          NP_BUILD_DEP: "1.16.5"
           NIGHTLY_BUILD: "true"
         py_3.7_64:
           PYTHON_VERSION: "3.7"
           PYTHON_ARCH: "x64"
-          NP_BUILD_DEP: "1.15.4"
+          NP_BUILD_DEP: "1.16.5"
           NIGHTLY_BUILD: "true"
         py_3.8_32:
           PYTHON_VERSION: "3.8"
@@ -63,19 +55,14 @@ jobs:
       name: linux
       vmImage: ubuntu-16.04
       matrix:
-        # py_3.6_32:
-        #   MB_PYTHON_VERSION: "3.6"
-        #   PLAT: "i686"
-        # py_3.6_64:
-        #   MB_PYTHON_VERSION: "3.6"
         py_3.7_32:
           MB_PYTHON_VERSION: "3.7"
           PLAT: "i686"
-          NP_BUILD_DEP: "numpy==1.15.4"
+          NP_BUILD_DEP: "numpy==1.16.5"
           NIGHTLY_BUILD: "true"
         py_3.7_64:
           MB_PYTHON_VERSION: "3.7"
-          NP_BUILD_DEP: "numpy==1.15.4"
+          NP_BUILD_DEP: "numpy==1.16.5"
           NIGHTLY_BUILD: "true"
         py_3.8_32:
           MB_PYTHON_VERSION: "3.8"
@@ -102,12 +89,9 @@ jobs:
       name: macOS
       vmImage: macOS-10.14
       matrix:
-        # py_3.6_64:
-        #   MB_PYTHON_VERSION: "3.6"
-        #   NP_BUILD_DEP: "numpy==1.13.3"
         py_3.7_64:
           MB_PYTHON_VERSION: "3.7"
-          NP_BUILD_DEP: "numpy==1.15.4"
+          NP_BUILD_DEP: "numpy==1.16.5"
           NIGHTLY_BUILD: "true"
         py_3.8_64:
           MB_PYTHON_VERSION: "3.8"
