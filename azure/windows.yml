@@ -8,8 +8,8 @@ jobs:
     pool:
       vmImage: ${{ parameters.vmImage }}
     variables:
-      BUILD_COMMIT: "v1.1.5"
-      NP_BUILD_DEP: "1.15.4"
+      BUILD_COMMIT: "v1.2.0rc0"
+      NP_BUILD_DEP: "1.16.5"
       CYTHON_BUILD_DEP: "0.29.21"
       NIGHTLY_BUILD_COMMIT: "master"
       NIGHTLY_BUILD: "false"
