@@ -22,13 +22,15 @@ jobs:
         py_3.7_32:
           PYTHON_VERSION: "3.7"
           PYTHON_ARCH: "x86"
-          NP_BUILD_DEP: "1.16.5"
-          NIGHTLY_BUILD: "true"
+          NP_BUILD_DEP: "1.17.3"
+          # pandas 1.4 requires py3.8+, remove this job on 1.4 release
+          NIGHTLY_BUILD: "false"
         py_3.7_64:
           PYTHON_VERSION: "3.7"
           PYTHON_ARCH: "x64"
-          NP_BUILD_DEP: "1.16.5"
-          NIGHTLY_BUILD: "true"
+          NP_BUILD_DEP: "1.17.3"
+          # pandas 1.4 requires py3.8+, remove this job on 1.4 release
+          NIGHTLY_BUILD: "false"
         py_3.8_32:
           PYTHON_VERSION: "3.8"
           PYTHON_ARCH: "x86"
@@ -58,12 +60,14 @@ jobs:
         py_3.7_32:
           MB_PYTHON_VERSION: "3.7"
           PLAT: "i686"
-          NP_BUILD_DEP: "numpy==1.16.5"
-          NIGHTLY_BUILD: "true"
+          NP_BUILD_DEP: "numpy==1.17.3"
+          # pandas 1.4 requires py3.8+, remove this job on 1.4 release
+          NIGHTLY_BUILD: "false"
         py_3.7_64:
           MB_PYTHON_VERSION: "3.7"
-          NP_BUILD_DEP: "numpy==1.16.5"
-          NIGHTLY_BUILD: "true"
+          NP_BUILD_DEP: "numpy==1.17.3"
+          # pandas 1.4 requires py3.8+, remove this job on 1.4 release
+          NIGHTLY_BUILD: "false"
         py_3.8_32:
           MB_PYTHON_VERSION: "3.8"
           PLAT: "i686"
@@ -91,8 +95,9 @@ jobs:
       matrix:
         py_3.7_64:
           MB_PYTHON_VERSION: "3.7"
-          NP_BUILD_DEP: "numpy==1.16.5"
-          NIGHTLY_BUILD: "true"
+          NP_BUILD_DEP: "numpy==1.17.3"
+          # pandas 1.4 requires py3.8+, remove this job on 1.4 release
+          NIGHTLY_BUILD: "false"
         py_3.8_64:
           MB_PYTHON_VERSION: "3.8"
           NP_BUILD_DEP: "numpy==1.17.3"
