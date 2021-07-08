@@ -27,8 +27,11 @@ jobs:
 
       - task: UsePythonVersion@0
         inputs:
+        ${{ if not(contains($MB_PYTHON_VERSION, 'pypy'))}}:
           versionSpec: $(MB_PYTHON_VERSION)
-        condition: not(contains('$(MB_PYTHON_VERSION)', 'pypy'))
+        ${{ if contains($MB_PYTHON_VERSION, 'pypy')}}:
+          # Hard-code for now, doesn't really matter since multibuild will pull pypy itself
+          versionSpec: "3.7"
         displayName: Set python version
 
       - bash: |
