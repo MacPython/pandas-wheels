@@ -1,9 +1,3 @@
-variables:
-  ${{ if not(contains($(MB_PYTHON_VERSION), 'pypy'))}}:
-    AZURE_PYTHON_VERSION: $(MB_PYTHON_VERSION)
-  ${{ if contains($MB_PYTHON_VERSION, 'pypy')}}:
-    # Hard-code for now, doesn't really matter since multibuild will pull pypy itself
-    AZURE_PYTHON_VERSION: "3.7" 
 parameters:
   name: ""
   vmImage: ""
@@ -33,8 +27,9 @@ jobs:
 
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: $(AZURE_PYTHON_VERSION)
+          versionSpec: $(MB_PYTHON_VERSION)
         displayName: Set python version
+        condition: not(contains(variables["MB_PYTHON_VERSION"], 'pypy')
 
       - bash: |
           set -e
