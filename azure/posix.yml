@@ -29,7 +29,7 @@ jobs:
         inputs:
           versionSpec: $(MB_PYTHON_VERSION)
         displayName: Set python version
-        condition: not(contains(variables['MB_PYTHON_VERSION'], "pypy"))
+        condition: not(contains(variables['MB_PYTHON_VERSION'], 'pypy'))
 
       - bash: |
           set -e
