@@ -30,6 +30,12 @@ jobs:
           versionSpec: $(MB_PYTHON_VERSION)
         displayName: Set python version
         condition: not(contains(variables['MB_PYTHON_VERSION'], 'pypy'))
+        
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.7"
+        displayName: Set python version
+        condition: contains(variables['MB_PYTHON_VERSION'], 'pypy')
 
       - bash: |
           set -e
