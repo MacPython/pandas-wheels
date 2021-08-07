@@ -66,14 +66,18 @@ jobs:
           set -e
           pip install --timeout=60 numpy==$NP_BUILD_DEP
           pip install --timeout=60 $TEST_DEPENDS Cython==$CYTHON_BUILD_DEP
-          pip install twine wheel
+          pip install twine wheel delvewheel
           pushd pandas
           cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30036/$PYTHON_ARCH/Microsoft.VC142.CRT/msvcp140.dll" pandas/_libs/window
-          cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30036/$PYTHON_ARCH/Microsoft.VC142.CRT/concrt140.dll" pandas/_libs/window
+          cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30036/$PYTHON_ARCH/Microsoft.VC142.CRT/vcruntime140_1.dll" pandas/_libs/window
           python setup.py build
           python setup.py bdist_wheel
           ls dist
           twine check dist/*
+          # Delvewheel doesn't support using the directory path :(
+          # We are just using delvewheel right now to list dll dependencies not copy them
+          WHEEL_PATH = $(python -c "import os; print(os.listdir('.')[0])")
+          delvewheel show WHEEL_PATH
           popd
         displayName: Build wheel
         condition: eq(variables['SKIP_BUILD'], 'false')
@@ -125,3 +129,6 @@ jobs:
           echo "PyPI-style index: https://pypi.anaconda.org/$ANACONDA_ORG/simple"
         displayName: Upload to anaconda.org (only if secret token is retrieved)
         condition: ne(variables['TOKEN'], '')
+      
+      - publish: pandas/dist/pandas-*.whl
+        artifact: Wheel
