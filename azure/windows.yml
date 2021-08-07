@@ -76,7 +76,7 @@ jobs:
           twine check dist/*
           # Delvewheel doesn't support using the directory path :(
           # We are just using delvewheel right now to list dll dependencies not copy them
-          WHEEL_PATH = $(python -c "import os; print(os.listdir('.')[0])")
+          export WHEEL_PATH = "dist/$(ls dist)"
           delvewheel show WHEEL_PATH
           popd
         displayName: Build wheel
