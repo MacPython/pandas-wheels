@@ -69,7 +69,7 @@ jobs:
           pip install twine wheel delvewheel
           pushd pandas
           cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30036/$PYTHON_ARCH/Microsoft.VC142.CRT/msvcp140.dll" pandas/_libs/window
-          cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30036/$PYTHON_ARCH/Microsoft.VC142.CRT/vcruntime140_1.dll" pandas/_libs/window
+          cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30036/x64/Microsoft.VC142.CRT/vcruntime140_1.dll" pandas/_libs/window
           python setup.py build
           python setup.py bdist_wheel
           ls dist
