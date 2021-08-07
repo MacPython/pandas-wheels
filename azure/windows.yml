@@ -77,7 +77,7 @@ jobs:
           # Delvewheel doesn't support using the directory path :(
           # We are just using delvewheel right now to list dll dependencies not copy them
           export WHEEL_PATH="dist/$(ls dist)"
-          delvewheel show WHEEL_PATH
+          delvewheel show $WHEEL_PATH
           popd
         displayName: Build wheel
         condition: eq(variables['SKIP_BUILD'], 'false')
