@@ -130,5 +130,5 @@ jobs:
         displayName: Upload to anaconda.org (only if secret token is retrieved)
         condition: ne(variables['TOKEN'], '')
       
-      - publish: pandas/dist/pandas-*.whl
+      - publish: pandas/dist
         artifact: Wheel
