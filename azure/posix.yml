@@ -90,9 +90,10 @@ jobs:
           if [[ $MB_PYTHON_VERSION == "3.10" ]]; then
             # Python 3.10 has weird numpy failures
             # GH 41935
-            exit 0;
+            exit 0
           fi
         displayName: Install wheel and test
+        condition: eq(variables['SKIP_BUILD'], 'false')
 
       - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
