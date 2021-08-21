@@ -84,9 +84,9 @@ jobs:
           source multibuild/common_utils.sh
           source multibuild/travis_steps.sh
           source extra_functions.sh
-          setup_test_venv
-          install_run $PLAT
-          teardown_test_venv
+          setup_test_venv;
+          install_run $PLAT;
+          teardown_test_venv;
           if [[ $MB_PYTHON_VERSION == "3.10" ]]; then
             # Python 3.10 has weird numpy failures
             # GH 41935
