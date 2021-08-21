@@ -79,28 +79,20 @@ jobs:
       # Work around azure pipelines bug where you can't allow failures
       # for only 1 job
       # https://github.com/microsoft/azure-pipelines-tasks/issues/9302
-      - ${{ if not(eq(variables['MB_PYTHON_VERSION'], '3.10')) }}:
-        - bash: |
-            set -xe
-            source multibuild/common_utils.sh
-            source multibuild/travis_steps.sh
-            source extra_functions.sh
-            setup_test_venv
-            install_run $PLAT
-            teardown_test_venv
-          displayName: Install wheel and test
- 
-      - ${{ if eq(variables['MB_PYTHON_VERSION'], '3.10') }}:
-        - bash: |
-            set -xe
-            source multibuild/common_utils.sh
-            source multibuild/travis_steps.sh
-            source extra_functions.sh
-            setup_test_venv
-            install_run $PLAT
-            teardown_test_venv
-            exit 0
-          displayName: Install wheel and test
+      - bash: |
+          set -xe
+          source multibuild/common_utils.sh
+          source multibuild/travis_steps.sh
+          source extra_functions.sh
+          setup_test_venv
+          install_run $PLAT
+          teardown_test_venv
+          if [[ $MB_PYTHON_VERSION == "3.10" ]]; then
+            # Python 3.10 has weird numpy failures
+            # GH 41935
+            exit 0;
+          fi
+        displayName: Install wheel and test
 
       - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
