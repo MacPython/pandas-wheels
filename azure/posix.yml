@@ -88,7 +88,7 @@ jobs:
             setup_test_venv
             install_run $PLAT
             teardown_test_venv
-         displayName: Install wheel and test
+          displayName: Install wheel and test
  
       - ${{ if eq(variables['MB_PYTHON_VERSION'], '3.10') }}:
         - bash: |
