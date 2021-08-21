@@ -86,6 +86,7 @@ jobs:
           teardown_test_venv
         displayName: Install wheel and test
         condition: eq(variables['SKIP_BUILD'], 'false')
+        continueOnError: eq(variables['MB_PYTHON_VERSION'], '3.10')
 
       - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
