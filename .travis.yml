@@ -72,7 +72,6 @@ script:
     # pandas-dev/pandas#41935, we get weird numpy
     # failures on python 3.10
     - if [ "$MB_PYTHON_VERSION" == "3.10" ]; then
-        echo "running with exit code 0";
         set +e;
         install_run $PLAT;
         exit 0;
