@@ -65,20 +65,19 @@ install:
     - build_wheel $REPO_DIR $PLAT
 
 script:
-    - if [ "$MB_PYTHON_VERSION" == "3.10" ]; then
-        set +e;
-      fi
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - source extra_functions.sh
     - setup_test_venv
-    - install_run $PLAT
-    - teardown_test_venv
     # pandas-dev/pandas#41935, we get weird numpy
     # failures on python 3.10
     - if [ "$MB_PYTHON_VERSION" == "3.10" ]; then
+        install_run $PLAT;
         exit 0;
+      else
+        install_run $PLAT;
       fi
+    - teardown_test_venv
 
 after_success:
     # Taken from Macpython/scipy-wheels
