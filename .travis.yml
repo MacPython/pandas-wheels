@@ -65,6 +65,9 @@ install:
     - build_wheel $REPO_DIR $PLAT
 
 script:
+    - if [ "$MB_PYTHON_VERSION" == "3.10" ]; then
+        set +e;
+      fi
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - source extra_functions.sh
