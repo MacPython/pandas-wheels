@@ -38,4 +38,5 @@ function run_tests {
         python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--ignore=pandas/tests/reductions/test_reductions.py", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self and not test_corr_sanity"])'
     else
         python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self"])'
+    fi
 }
