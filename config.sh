@@ -34,5 +34,8 @@ function run_tests {
     # Skip test_rolling_var_numerical_issues: https://github.com/pandas-dev/pandas/issues/37398
     # Skip test_rolling_skew_kurt_large_value_range: https://github.com/pandas-dev/pandas/issues/37398
     # Skip test_pairwise_with_self/test_no_pairwise_with_self: https://github.com/pandas-dev/pandas/issues/39553
-    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self"])'
+    if [[ "$MB_PYTHON_VERSION" == "3.10" ]]; then
+        python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--ignore=pandas/tests/reductions/test_reductions.py", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self and not test_corr_sanity"])'
+    else
+        python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self"])'
 }
