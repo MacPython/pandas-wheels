@@ -9,11 +9,11 @@ jobs:
       vmImage: ${{ parameters.vmImage }}
     variables:
       REPO_DIR: "pandas"
-      BUILD_COMMIT: "master"
+      BUILD_COMMIT: "v1.3.2"
       PLAT: "x86_64"
       NP_BUILD_DEP: "numpy==1.17.3"
       CYTHON_BUILD_DEP: "cython==0.29.21"
-      NIGHTLY_BUILD_COMMIT: "v1.3.2"
+      NIGHTLY_BUILD_COMMIT: "master"
       NIGHTLY_BUILD: "false"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
       TEST_DIR: "tmp_for_test"
@@ -75,10 +75,7 @@ jobs:
           build_wheel $REPO_DIR $PLAT
         displayName: Build wheel
         condition: eq(variables['SKIP_BUILD'], 'false')
-      
-      # Work around azure pipelines bug where you can't allow failures
-      # for only 1 job
-      # https://github.com/microsoft/azure-pipelines-tasks/issues/9302
+
       - bash: |
           set -xe
           source multibuild/common_utils.sh
