@@ -13,7 +13,7 @@ jobs:
       PLAT: "x86_64"
       NP_BUILD_DEP: "numpy==1.17.3"
       CYTHON_BUILD_DEP: "cython==0.29.21"
-      NIGHTLY_BUILD_COMMIT: "master"
+      NIGHTLY_BUILD_COMMIT: "v1.3.2"
       NIGHTLY_BUILD: "false"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
       TEST_DIR: "tmp_for_test"
@@ -84,19 +84,9 @@ jobs:
           source multibuild/common_utils.sh
           source multibuild/travis_steps.sh
           source extra_functions.sh
-          if [[ $MB_PYTHON_VERSION == "3.10" ]]; then
-            # Python 3.10 has weird numpy failures
-            # GH 41935
-            set +e # Don't stop execution if error
-          fi
           setup_test_venv
           install_run $PLAT
           teardown_test_venv
-          if [[ $MB_PYTHON_VERSION == "3.10" ]]; then
-            # Python 3.10 has weird numpy failures
-            # GH 41935
-            exit 0
-          fi
         displayName: Install wheel and test
         condition: eq(variables['SKIP_BUILD'], 'false')
 
