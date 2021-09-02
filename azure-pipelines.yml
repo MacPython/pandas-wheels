@@ -17,7 +17,7 @@ jobs:
   - template: azure/windows.yml
     parameters:
       name: windows
-      vmImage: windows-2019
+      vmImage: vs2017-win2016
       matrix:
         py_3.7_32:
           PYTHON_VERSION: "3.7"
@@ -92,12 +92,19 @@ jobs:
           MB_ML_VER: "2014"
           NP_BUILD_DEP: "numpy==1.19.3"
           NIGHTLY_BUILD: "true"
+        py_3.10_64:
+          MB_PYTHON_VERSION: "3.10"
+          MB_ML_VER: "2014"
+          NP_BUILD_DEP: "numpy==1.21.2"
+          CYTHON_BUILD_DEP: "cython==0.29.24"
+          DOCKER_TEST_IMAGE: "multibuild/focal_{PLAT}"
+          NIGHTLY_BUILD: "true"
 
 
   - template: azure/posix.yml
     parameters:
       name: macOS
-      vmImage: macOS-10.15
+      vmImage: macOS-10.14
       matrix:
         py_3.7_64:
           MB_PYTHON_VERSION: "3.7"
