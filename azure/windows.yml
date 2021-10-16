@@ -10,7 +10,7 @@ jobs:
     variables:
       BUILD_COMMIT: "1.3.x"
       NP_BUILD_DEP: "1.17.3"
-      CYTHON_BUILD_DEP: "0.29.21"
+      CYTHON_BUILD_DEP: "0.29.24"
       NIGHTLY_BUILD_COMMIT: "master"
       NIGHTLY_BUILD: "false"
       PYTHON_ARCH: "x64"
