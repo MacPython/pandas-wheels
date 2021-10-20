@@ -127,6 +127,7 @@ jobs:
           NIGHTLY_BUILD: "true"
         py_3.10_64:
           MB_PYTHON_VERSION: "3.10"
+          PLAT: universal2 # No numpy x86_64 wheels on MacOS anymore
           NP_BUILD_DEP: "numpy==1.21.3"
           CYTHON_BUILD_DEP: "cython==0.29.24"
           NIGHTLY_BUILD: "true"
