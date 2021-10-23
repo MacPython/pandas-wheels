@@ -51,6 +51,11 @@ jobs:
           PYTHON_ARCH: "x64"
           NP_BUILD_DEP: "1.19.3"
           NIGHTLY_BUILD: "true"
+        py_3.10_64:
+          PYTHON_VERSION: "3.10"
+          PYTHON_ARCH: "x64"
+          NP_BUILD_DEP: "1.21.3"
+          NIGHTLY_BUILD: "true"
 
   - template: azure/posix.yml
     parameters:
@@ -104,7 +109,7 @@ jobs:
   - template: azure/posix.yml
     parameters:
       name: macOS
-      vmImage: macOS-10.14
+      vmImage: macOS-latest
       matrix:
         py_3.7_64:
           MB_PYTHON_VERSION: "3.7"
@@ -118,4 +123,9 @@ jobs:
         py_3.9_64:
           MB_PYTHON_VERSION: "3.9"
           NP_BUILD_DEP: "numpy==1.19.3"
+          NIGHTLY_BUILD: "true"
+        py_3.10_64:
+          MB_PYTHON_VERSION: "3.10"
+          PLAT: universal2 # No numpy x86_64 wheels on MacOS anymore
+          NP_BUILD_DEP: "numpy==1.21.3"
           NIGHTLY_BUILD: "true"
