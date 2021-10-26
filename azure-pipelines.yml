@@ -13,11 +13,16 @@ trigger:
 pr:
 - master
 
+resources:
+  containers:
+  - container: windows-container
+    image: mcr.microsoft.com/windows/servercore:ltsc2019
+
 jobs:
   - template: azure/windows.yml
     parameters:
       name: windows
-      vmImage: vs2017-win2016
+      vmImage: windows-2019
       matrix:
         py_3.7_32:
           PYTHON_VERSION: "3.7"
