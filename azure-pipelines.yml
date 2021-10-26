@@ -13,11 +13,6 @@ trigger:
 pr:
 - master
 
-resources:
-  containers:
-  - container: windows-container
-    image: mcr.microsoft.com/windows/servercore:ltsc2019
-
 jobs:
   - template: azure/windows.yml
     parameters:
