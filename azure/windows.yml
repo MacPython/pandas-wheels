@@ -80,17 +80,17 @@ jobs:
           popd
         displayName: Build wheel
         condition: eq(variables['SKIP_BUILD'], 'false')
-       - bash: |
-           set -e
-           source extra_functions.sh
-           source config.sh
-           setup_test_venv
-           pip install pandas/dist/pandas-*.whl
-           run_tests
-           teardown_test_venv
-         displayName: Install wheel and test
-         condition: eq(variables['SKIP_BUILD'], 'false')
-      
+      - bash: |
+          set -e
+          source extra_functions.sh
+          source config.sh
+          setup_test_venv
+          pip install pandas/dist/pandas-*.whl
+          run_tests
+          teardown_test_venv
+        displayName: Install wheel and test
+        condition: eq(variables['SKIP_BUILD'], 'false')
+
       - script: |
           docker pull python:$(PYTHON_VERSION)-windowsservercore
           docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION)-windowsservercore /pandas/check_windows_dlls.bat
