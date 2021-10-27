@@ -96,7 +96,7 @@ jobs:
           docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION)-windowsservercore /pandas/check_windows_dlls.bat
         displayName: Ensure wheel imports correctly
         # No Windows images for x86
-        condition: eq(variables['PYTHON_ARCH'], 'x64')
+        condition: and(eq(variables['SKIP_BUILD'], 'false'), eq(variables['PYTHON_ARCH'], 'x64'))
 
       - bash: echo "##vso[task.prependpath]$CONDA/Scripts"
         displayName: Add conda to PATH
