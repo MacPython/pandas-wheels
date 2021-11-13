@@ -61,7 +61,7 @@ jobs:
       - bash: |
           set -e
           pip install virtualenv wheel
-          echo 'global-exclude *.cpt' >> pandas/MANIFEST.in
+          sed -i '36 i global-exclude *.cpt' pandas/MANIFEST.in
           cat pandas/MANIFEST.in
           BUILD_DEPENDS="$NP_BUILD_DEP $CYTHON_BUILD_DEP"
 
