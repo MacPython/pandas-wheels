@@ -8,12 +8,12 @@ env:
   global:
       - REPO_DIR=pandas
       # on release change this to a version
-      - BUILD_COMMIT="v1.3.2"
+      - BUILD_COMMIT="v1.3.4"
       - UNICODE_WIDTH=32
       - PLAT=aarch64
       - NP_BUILD_DEP="numpy==1.17.3"
       - NP_TEST_DEP="numpy==1.17.3"
-      - CYTHON_BUILD_DEP="cython==0.29.21"
+      - CYTHON_BUILD_DEP="cython==0.29.24"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       - TEST_DEPENDS="pytest pytest-xdist hypothesis"
       - TEST_DIR="tmp_for_test"
