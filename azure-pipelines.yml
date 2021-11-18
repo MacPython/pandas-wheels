@@ -129,7 +129,7 @@ jobs:
           PLAT: "x86_64"
           NP_BUILD_DEP: "numpy==1.21.3"
           NIGHTLY_BUILD: "true"
-        py_3.10_64:
+        py_3.10_universal2:
           MB_PYTHON_VERSION: "3.10"
           PLAT: universal2
           NP_BUILD_DEP: "numpy==1.21.3"
