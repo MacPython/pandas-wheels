@@ -29,7 +29,6 @@ jobs:
         inputs:
           versionSpec: $(MB_PYTHON_VERSION)
         displayName: Set python version
-        condition: not(eq(variables['MB_PYTHON_VERSION'], '3.10'))
 
       - bash: |
           set -e
