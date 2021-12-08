@@ -8,12 +8,12 @@ env:
   global:
       - REPO_DIR=pandas
       # on release change this to a version
-      - BUILD_COMMIT="v1.3.1"
+      - BUILD_COMMIT="v1.3.4"
       - UNICODE_WIDTH=32
       - PLAT=aarch64
       - NP_BUILD_DEP="numpy==1.17.3"
       - NP_TEST_DEP="numpy==1.17.3"
-      - CYTHON_BUILD_DEP="cython==0.29.21"
+      - CYTHON_BUILD_DEP="cython==0.29.24"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       - TEST_DEPENDS="pytest pytest-xdist hypothesis"
       - TEST_DIR="tmp_for_test"
@@ -22,6 +22,7 @@ env:
 
 jobs:
   include:
+    # Remove this one on 1.4 release
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.7
@@ -37,6 +38,14 @@ jobs:
         - MB_PYTHON_VERSION=3.9
         - NP_BUILD_DEP="numpy==1.19.1"
         - NP_TEST_DEP="numpy==1.19.1"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION="3.10"
+        - NP_BUILD_DEP="numpy==1.21.2"
+        - NP_TEST_DEP="numpy==1.21.2"
+        - CYTHON_BUILD_DEP="cython==0.29.24"
+        # Xenial is EOL and the pip there doesn't support python 3.10
+        - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
 before_install:
     # See:
     # https://github.com/travis-ci/travis-ci/issues/8920#issuecomment-352661024
@@ -60,7 +69,7 @@ script:
     - source multibuild/travis_steps.sh
     - source extra_functions.sh
     - setup_test_venv
-    - install_run $PLAT
+    - install_run $PLAT;
     - teardown_test_venv
 
 after_success:
