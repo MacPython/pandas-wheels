@@ -120,7 +120,7 @@ jobs:
           MB_PYTHON_VERSION: "3.8"
           NP_BUILD_DEP: "numpy==1.17.3"
           NIGHTLY_BUILD: "true"
-        py_3.8_universal2
+        py_3.8_universal2:
           MB_PYTHON_VERSION: "3.8"
           NP_BUILD_DEP: "numpy==1.17.3"
           NIGHTLY_BUILD: "true"
