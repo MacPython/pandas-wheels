@@ -68,8 +68,11 @@ jobs:
           pip install --timeout=60 $TEST_DEPENDS Cython==$CYTHON_BUILD_DEP
           pip install twine wheel
           pushd pandas
-          cp "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Redist/MSVC/14.16.27012/$PYTHON_ARCH/Microsoft.VC141.CRT/msvcp140.dll" pandas/_libs/window
-          cp "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Redist/MSVC/14.16.27012/$PYTHON_ARCH/Microsoft.VC141.CRT/concrt140.dll" pandas/_libs/window
+          cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30133/$PYTHON_ARCH/Microsoft.VC142.CRT/msvcp140.dll" pandas/_libs/window
+          cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30133/$PYTHON_ARCH/Microsoft.VC142.CRT/concrt140.dll" pandas/_libs/window
+          if [ "$PYTHON_ARCH" == "x64" ]; then
+            cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30133/x64/Microsoft.VC142.CRT/vcruntime140_1.dll" pandas/_libs/window
+          fi
           python setup.py build
           python setup.py bdist_wheel
           ls dist
@@ -87,6 +90,13 @@ jobs:
           teardown_test_venv
         displayName: Install wheel and test
         condition: eq(variables['SKIP_BUILD'], 'false')
+
+      - script: |
+          docker pull python:$(PYTHON_VERSION)-windowsservercore
+          docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION)-windowsservercore /pandas/check_windows_dlls.bat
+        displayName: Ensure wheel imports correctly
+        # No Windows images for x86
+        condition: and(eq(variables['SKIP_BUILD'], 'false'), eq(variables['PYTHON_ARCH'], 'x64'))
 
       - bash: echo "##vso[task.prependpath]$CONDA/Scripts"
         displayName: Add conda to PATH
