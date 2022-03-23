@@ -28,6 +28,8 @@ function run_tests {
     echo $PATH
     echo ${MB_PYTHON_VERSION}
     which -a python
+    # Pin setuptools < 60
+    pip install setuptools<60
     pip list
     python -c 'import pandas; pandas.show_versions()'
     # Skip test_float_precision_options: https://github.com/pandas-dev/pandas/issues/36429
