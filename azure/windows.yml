@@ -8,7 +8,7 @@ jobs:
     pool:
       vmImage: ${{ parameters.vmImage }}
     variables:
-      BUILD_COMMIT: "v1.4.2"
+      BUILD_COMMIT: "main"
       NP_BUILD_DEP: "1.17.3"
       CYTHON_BUILD_DEP: "0.29.24"
       NIGHTLY_BUILD_COMMIT: "main"
@@ -16,6 +16,7 @@ jobs:
       PYTHON_ARCH: "x64"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
       TEST_DIR: '$(Agent.WorkFolder)/tmp_for_test'
+      PANDAS_CI: 1
     strategy:
       matrix:
         ${{ insert }}: ${{ parameters.matrix }}

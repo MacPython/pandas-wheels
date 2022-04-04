@@ -9,7 +9,7 @@ jobs:
       vmImage: ${{ parameters.vmImage }}
     variables:
       REPO_DIR: "pandas"
-      BUILD_COMMIT: "v1.4.2"
+      BUILD_COMMIT: "main"
       PLAT: "x86_64"
       NP_BUILD_DEP: "numpy==1.17.3"
       CYTHON_BUILD_DEP: "cython==0.29.24"
@@ -17,6 +17,7 @@ jobs:
       NIGHTLY_BUILD: "false"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis"
       TEST_DIR: "tmp_for_test"
+      PANDAS_CI: 1
     strategy:
       matrix:
         ${{ insert }}: ${{ parameters.matrix }}
