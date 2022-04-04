@@ -25,6 +25,7 @@ function build_wheel {
 function run_tests {
     # Runs tests on installed distribution from an empty directory
     export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 4294967295))')
+    export PANDAS_CI=1
     echo $PATH
     echo ${MB_PYTHON_VERSION}
     which -a python
