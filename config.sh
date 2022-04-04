@@ -33,6 +33,7 @@ function run_tests {
     pip install "setuptools<60"
     pip list
     python -c 'import pandas; pandas.show_versions()'
+    python -c 'from pandas.compat import is_ci_environment; print(is_ci_environment())'
     # Skip test_float_precision_options: https://github.com/pandas-dev/pandas/issues/36429
     # Skip test_rolling_var_numerical_issues: https://github.com/pandas-dev/pandas/issues/37398
     # Skip test_rolling_skew_kurt_large_value_range: https://github.com/pandas-dev/pandas/issues/37398
