@@ -13,7 +13,7 @@ env:
       - PLAT=aarch64
       - NP_BUILD_DEP="numpy==1.17.3"
       - NP_TEST_DEP="numpy==1.17.3"
-      - CYTHON_BUILD_DEP="cython==0.29.24"
+      - CYTHON_BUILD_DEP="cython==0.29.30"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       - TEST_DEPENDS="pytest pytest-xdist hypothesis"
       - TEST_DIR="tmp_for_test"
@@ -37,7 +37,6 @@ jobs:
         - MB_PYTHON_VERSION="3.10"
         - NP_BUILD_DEP="numpy==1.21.2"
         - NP_TEST_DEP="numpy==1.21.2"
-        - CYTHON_BUILD_DEP="cython==0.29.24"
         # Xenial is EOL and the pip there doesn't support python 3.10
         - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
 before_install:
