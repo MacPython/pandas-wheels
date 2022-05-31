@@ -1,6 +1,13 @@
 # Define custom utilities
 # Test for OSX with [ -n "$IS_OSX" ]
 
+# Adapted from MacPython/numpy-wheels
+# https://github.com/MacPython/numpy-wheels/blob/87b189083a5f77225c3e51895c16d11711f73987/config.sh#L4-L7
+if [ $(uname) == "Linux" ]; then
+    IS_LINUX=1
+    ! git config --global --add safe.directory /io/pandas
+fi
+
 function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
