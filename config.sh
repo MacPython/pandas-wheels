@@ -37,6 +37,5 @@ function run_tests {
     # Skip test_rolling_var_numerical_issues: https://github.com/pandas-dev/pandas/issues/37398
     # Skip test_rolling_skew_kurt_large_value_range: https://github.com/pandas-dev/pandas/issues/37398
     # Skip test_pairwise_with_self/test_no_pairwise_with_self: https://github.com/pandas-dev/pandas/issues/39553
-    # Skip test_git_version/test_show_versions_console: https://github.com/pandas-dev/pandas/issues/46856
-    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self and not test_pickle_frame_v124_unpickle_130 and not test_git_version and not test_show_versions_console"])'
+    python -c 'import pandas; pandas.test(extra_args=["-m not clipboard", "--skip-slow", "--skip-network", "--skip-db", "-n=2", "-k not test_rolling_var_numerical_issues and not test_rolling_skew_kurt_large_value_range and not test_float_precision_options and not test_pairwise_with_self and not test_no_pairwise_with_self and not test_pickle_frame_v124_unpickle_130"])'
 }
