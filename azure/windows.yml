@@ -14,7 +14,8 @@ jobs:
       NIGHTLY_BUILD_COMMIT: "main"
       NIGHTLY_BUILD: "false"
       PYTHON_ARCH: "x64"
-      TEST_DEPENDS: "pytest pytest-xdist hypothesis"
+      # https://github.com/pandas-dev/pandas/issues/47332
+      TEST_DEPENDS: "pytest pytest-xdist hypothesis tzdata"
       TEST_DIR: '$(Agent.WorkFolder)/tmp_for_test'
     strategy:
       matrix:
