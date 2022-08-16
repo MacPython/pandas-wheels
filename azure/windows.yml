@@ -14,7 +14,7 @@ jobs:
       NIGHTLY_BUILD_COMMIT: "main"
       NIGHTLY_BUILD: "false"
       PYTHON_ARCH: "x64"
-      TEST_DEPENDS: "pytest pytest-xdist hypothesis"
+      TEST_DEPENDS: "pytest pytest-xdist hypothesis==6.52.1"
       TEST_DIR: '$(Agent.WorkFolder)/tmp_for_test'
     strategy:
       matrix:

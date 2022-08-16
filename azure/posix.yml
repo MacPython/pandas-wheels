@@ -15,7 +15,7 @@ jobs:
       CYTHON_BUILD_DEP: "cython==0.29.32"
       NIGHTLY_BUILD_COMMIT: "main"
       NIGHTLY_BUILD: "false"
-      TEST_DEPENDS: "pytest pytest-xdist hypothesis"
+      TEST_DEPENDS: "pytest pytest-xdist hypothesis==6.52.1"
       TEST_DIR: "tmp_for_test"
     strategy:
       matrix:
