@@ -15,7 +15,7 @@ env:
       - NP_TEST_DEP="numpy==1.17.3"
       - CYTHON_BUILD_DEP="cython==0.29.32"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
-      - TEST_DEPENDS="pytest pytest-xdist hypothesis"
+      - TEST_DEPENDS="pytest pytest-xdist hypothesis==6.52.1"
       - TEST_DIR="tmp_for_test"
       - MB_ML_VER=2014
       - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
