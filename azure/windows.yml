@@ -10,12 +10,11 @@ jobs:
     variables:
       BUILD_COMMIT: "1.4.x"
       NP_BUILD_DEP: "1.17.3"
-      CYTHON_BUILD_DEP: "0.29.30"
+      CYTHON_BUILD_DEP: "0.29.32"
       NIGHTLY_BUILD_COMMIT: "main"
       NIGHTLY_BUILD: "false"
       PYTHON_ARCH: "x64"
-      # https://github.com/pandas-dev/pandas/issues/47332
-      TEST_DEPENDS: "pytest pytest-xdist hypothesis tzdata"
+      TEST_DEPENDS: "pytest pytest-xdist hypothesis==6.52.1"
       TEST_DIR: '$(Agent.WorkFolder)/tmp_for_test'
     strategy:
       matrix:
