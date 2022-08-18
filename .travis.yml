@@ -46,7 +46,7 @@ before_install:
     - CONTAINER="wheels";
     - BUILD_COMMIT=$BUILD_COMMIT;
     - BUILD_DEPENDS="$NP_BUILD_DEP $EXTRA_BUILD_DEP Cython"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest pytest-xdist hypothesis"
+    - TEST_DEPENDS="$NP_TEST_DEP $TEST_DEPENDS"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - source extra_functions.sh
