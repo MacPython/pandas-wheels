@@ -39,6 +39,13 @@ jobs:
         - NP_TEST_DEP="numpy==1.21.2"
         # Xenial is EOL and the pip there doesn't support python 3.10
         - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION="3.11"
+        - NP_BUILD_DEP="numpy==1.23.2"
+        - NP_TEST_DEP="numpy==1.23.2"
+        # Xenial is EOL and the pip there doesn't support python 3.10
+        - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
 before_install:
     # See:
     # https://github.com/travis-ci/travis-ci/issues/8920#issuecomment-352661024
