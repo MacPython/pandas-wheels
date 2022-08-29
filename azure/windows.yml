@@ -94,8 +94,9 @@ jobs:
         condition: eq(variables['SKIP_BUILD'], 'false')
 
       - script: |
-          docker pull python:$(STRIPPED_PYTHON_VERSION)-windowsservercore
-          docker run -v %cd%:c:\pandas python:$(STRIPPED_PYTHON_VERSION)-windowsservercore /pandas/check_windows_dlls.bat
+          echo '$[variables.STRIPPED_PYTHON_VERSION]'
+          docker pull python:$[variables.STRIPPED_PYTHON_VERSION]-windowsservercore
+          docker run -v %cd%:c:\pandas python:$[variables.STRIPPED_PYTHON_VERSION]-windowsservercore /pandas/check_windows_dlls.bat
         displayName: Ensure wheel imports correctly
         # No Windows images for x86
         condition: and(eq(variables['SKIP_BUILD'], 'false'), eq(variables['PYTHON_ARCH'], 'x64'))
