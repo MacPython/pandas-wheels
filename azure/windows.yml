@@ -94,7 +94,7 @@ jobs:
         condition: eq(variables['SKIP_BUILD'], 'false')
 
       - script: |
-          echo '$[variables.STRIPPED_PYTHON_VERSION]'
+          echo $[variables.STRIPPED_PYTHON_VERSION]
           docker pull python:$[variables.STRIPPED_PYTHON_VERSION]-windowsservercore
           docker run -v %cd%:c:\pandas python:$[variables.STRIPPED_PYTHON_VERSION]-windowsservercore /pandas/check_windows_dlls.bat
         displayName: Ensure wheel imports correctly
