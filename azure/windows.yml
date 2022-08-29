@@ -93,8 +93,12 @@ jobs:
         condition: eq(variables['SKIP_BUILD'], 'false')
 
       - script: |
+          if ($(PYTHON_VERSION) -contains "-dev") { 
+            # Strip out the dev suffix
+            $Env:PYTHON_VERSION = $(PYTHON_VERSION).Split("-")
+          }
           docker pull python:$(PYTHON_VERSION)-windowsservercore
-          docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION)-windowsservercore /pandas/check_windows_dlls.bat
+          & "docker run -v %cd%:c:\pandas python:$Env:PYTHON_VERSION-windowsservercore /pandas/check_windows_dlls.bat"
         displayName: Ensure wheel imports correctly
         # No Windows images for x86
         condition: and(eq(variables['SKIP_BUILD'], 'false'), eq(variables['PYTHON_ARCH'], 'x64'))
