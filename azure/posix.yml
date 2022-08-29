@@ -28,6 +28,7 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: $(MB_PYTHON_VERSION)
+          allowUnstable: true
         displayName: Set python version
         condition: not(eq(variables['MB_PYTHON_VERSION'], '3.11'))
 

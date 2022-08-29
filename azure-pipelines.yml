@@ -44,6 +44,11 @@ jobs:
           PYTHON_ARCH: "x64"
           NP_BUILD_DEP: "1.21.3"
           NIGHTLY_BUILD: "true"
+        py_3.11_64:
+          PYTHON_VERSION: "3.11-dev"
+          PYTHON_ARCH: "x64"
+          NP_BUILD_DEP: "1.23.2"
+          NIGHTLY_BUILD: "true"
 
   - template: azure/posix.yml
     parameters:
@@ -105,4 +110,14 @@ jobs:
           MB_PYTHON_VERSION: "3.10"
           PLAT: universal2
           NP_BUILD_DEP: "numpy==1.21.3"
+          NIGHTLY_BUILD: "true"
+        py_3.11_64:
+          MB_PYTHON_VERSION: "3.11-dev"
+          PLAT: "x86_64"
+          NP_BUILD_DEP: "numpy==1.23.2"
+          NIGHTLY_BUILD: "true"
+        py_3.11_universal2:
+          MB_PYTHON_VERSION: "3.11-dev"
+          PLAT: universal2
+          NP_BUILD_DEP: "numpy==1.23.2"
           NIGHTLY_BUILD: "true"
