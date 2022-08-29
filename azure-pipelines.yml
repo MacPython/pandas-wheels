@@ -72,7 +72,7 @@ jobs:
           DOCKER_TEST_IMAGE: "multibuild/focal_{PLAT}"
           NIGHTLY_BUILD: "true"
         py_3.11_64:
-          MB_PYTHON_VERSION: "3.11-dev"
+          MB_PYTHON_VERSION: "3.11"
           MB_ML_VER: "2014"
           NP_BUILD_DEP: "numpy==1.23.2"
           DOCKER_TEST_IMAGE: "multibuild/focal_{PLAT}"
