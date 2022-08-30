@@ -16,7 +16,6 @@ jobs:
       PYTHON_ARCH: "x64"
       TEST_DEPENDS: "pytest pytest-xdist hypothesis==6.52.1"
       TEST_DIR: '$(Agent.WorkFolder)/tmp_for_test'
-      STRIPPED_PYTHON_VERSION: ${{ replace(variables['PYTHON_VERSION'], '-dev', '') }}
     strategy:
       matrix:
         ${{ insert }}: ${{ parameters.matrix }}
@@ -93,10 +92,16 @@ jobs:
         displayName: Install wheel and test
         condition: eq(variables['SKIP_BUILD'], 'false')
 
+      - bash:
+          if [[ $string == *"-dev"* ]]; then
+            stripped_ver=$(echo $(PYTHON_VERSION) | sed -e "s/-dev//")
+            echo "##vso[task.setvariable variable=PYTHON_VERSION]$stripped_ver"
+          fi
+        displayName: Strip dev postfix PYTHON_VERSION for pre-releases
+
       - script: |
-          echo $(STRIPPED_PYTHON_VERSION)
-          docker pull python:$(STRIPPED_PYTHON_VERSION)-windowsservercore
-          docker run -v %cd%:c:\pandas python:$(STRIPPED_PYTHON_VERSION])-windowsservercore /pandas/check_windows_dlls.bat
+          docker pull python:$(PYTHON_VERSION)-windowsservercore
+          docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION])-windowsservercore /pandas/check_windows_dlls.bat
         displayName: Ensure wheel imports correctly
         # No Windows images for x86
         condition: and(eq(variables['SKIP_BUILD'], 'false'), eq(variables['PYTHON_ARCH'], 'x64'))
