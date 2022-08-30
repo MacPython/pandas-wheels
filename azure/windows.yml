@@ -94,8 +94,11 @@ jobs:
 
       - bash: |
           if [[ $PYTHON_VERSION == *"-dev"* ]]; then
-            stripped_ver=$(echo $PYTHON_VERSION | sed -e "s/-dev//")
+            stripped_ver=$(echo $PYTHON_VERSION | sed -e "s/dev/rc/g")
+            echo $stripped_ver
             echo "##vso[task.setvariable variable=STRIPPED_PYTHON_VERSION]$stripped_ver"
+          else
+            echo "##vso[task.setvariable variable=STRIPPED_PYTHON_VERSION]$PYTHON_VERSION"
           fi
         displayName: Strip dev postfix from PYTHON_VERSION for pre-releases
         condition: eq(variables['SKIP_BUILD'], 'false')
