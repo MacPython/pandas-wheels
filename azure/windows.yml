@@ -93,7 +93,7 @@ jobs:
         condition: eq(variables['SKIP_BUILD'], 'false')
 
       - bash: |
-          if [[ $string == *"-dev"* ]]; then
+          if [[ $PYTHON_VERSION == *"-dev"* ]]; then
             stripped_ver=$(echo $PYTHON_VERSION | sed -e "s/-dev//")
             echo $stripped_ver
             echo "##vso[task.setvariable variable=PYTHON_VERSION]$stripped_ver"
