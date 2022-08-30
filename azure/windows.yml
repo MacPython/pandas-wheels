@@ -95,6 +95,7 @@ jobs:
       - bash: |
           if [[ $string == *"-dev"* ]]; then
             stripped_ver=$(echo $(PYTHON_VERSION) | sed -e "s/-dev//")
+            echo $stripped_ver
             echo "##vso[task.setvariable variable=PYTHON_VERSION]$stripped_ver"
           fi
         displayName: Strip dev postfix PYTHON_VERSION for pre-releases
@@ -102,7 +103,7 @@ jobs:
 
       - script: |
           docker pull python:$(PYTHON_VERSION)-windowsservercore
-          docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION])-windowsservercore /pandas/check_windows_dlls.bat
+          docker run -v %cd%:c:\pandas python:$(PYTHON_VERSION)-windowsservercore /pandas/check_windows_dlls.bat
         displayName: Ensure wheel imports correctly
         # No Windows images for x86
         condition: and(eq(variables['SKIP_BUILD'], 'false'), eq(variables['PYTHON_ARCH'], 'x64'))
