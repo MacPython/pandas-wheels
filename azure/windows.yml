@@ -94,7 +94,7 @@ jobs:
 
       - bash: |
           if [[ $string == *"-dev"* ]]; then
-            stripped_ver=$(echo $(PYTHON_VERSION) | sed -e "s/-dev//")
+            stripped_ver=$(echo $PYTHON_VERSION | sed -e "s/-dev//")
             echo $stripped_ver
             echo "##vso[task.setvariable variable=PYTHON_VERSION]$stripped_ver"
           fi
