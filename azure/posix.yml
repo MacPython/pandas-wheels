@@ -9,7 +9,7 @@ jobs:
       vmImage: ${{ parameters.vmImage }}
     variables:
       REPO_DIR: "pandas"
-      BUILD_COMMIT: "v1.5.x"
+      BUILD_COMMIT: "v1.5.0rc0"
       PLAT: "x86_64"
       NP_BUILD_DEP: "numpy==1.17.3"
       CYTHON_BUILD_DEP: "cython==0.29.32"
