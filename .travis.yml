@@ -18,7 +18,7 @@ env:
       - TEST_DEPENDS="pytest pytest-xdist hypothesis==6.52.1"
       - TEST_DIR="tmp_for_test"
       - MB_ML_VER=2014
-      - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+      - DOCKER_TEST_IMAGE=multibuild/focal_arm64v8
 
 jobs:
   include:
@@ -37,15 +37,11 @@ jobs:
         - MB_PYTHON_VERSION="3.10"
         - NP_BUILD_DEP="numpy==1.21.2"
         - NP_TEST_DEP="numpy==1.21.2"
-        # Xenial is EOL and the pip there doesn't support python 3.10
-        - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
     - os: linux
       env:
         - MB_PYTHON_VERSION="3.11"
         - NP_BUILD_DEP="numpy==1.23.2"
         - NP_TEST_DEP="numpy==1.23.2"
-        # Xenial is EOL and the pip there doesn't support python 3.10
-        - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
 before_install:
     # See:
     # https://github.com/travis-ci/travis-ci/issues/8920#issuecomment-352661024
