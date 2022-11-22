@@ -25,25 +25,25 @@ jobs:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.8
-        - NP_BUILD_DEP="numpy==1.19"
-        - NP_TEST_DEP="numpy==1.19"
+        - NP_BUILD_DEP="numpy==1.19.1"
+        - NP_TEST_DEP="numpy==1.19.1"
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.9
-        - NP_BUILD_DEP="numpy==1.20"
-        - NP_TEST_DEP="numpy==1.20"
+        - NP_BUILD_DEP="numpy==1.19.3"
+        - NP_TEST_DEP="numpy==1.19.3"
     - os: linux
       env:
         - MB_PYTHON_VERSION="3.10"
-        - NP_BUILD_DEP="numpy==1.21"
-        - NP_TEST_DEP="numpy==1.21"
+        - NP_BUILD_DEP="numpy==1.21.2"
+        - NP_TEST_DEP="numpy==1.21.2"
         # Xenial is EOL and the pip there doesn't support python 3.10
         - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
     - os: linux
       env:
         - MB_PYTHON_VERSION="3.11"
-        - NP_BUILD_DEP="numpy==1.23"
-        - NP_TEST_DEP="numpy==1.23"
+        - NP_BUILD_DEP="numpy==1.23.2"
+        - NP_TEST_DEP="numpy==1.23.2"
         # Xenial is EOL and the pip there doesn't support python 3.10
         - DOCKER_TEST_IMAGE="multibuild/focal_arm64v8"
 before_install:
