@@ -67,6 +67,7 @@ jobs:
           set -e
           pip install --timeout=60 numpy==$NP_BUILD_DEP
           pip install --timeout=60 $TEST_DEPENDS Cython==$CYTHON_BUILD_DEP
+          pip install versioneer[toml]
           pip install twine wheel
           pushd pandas
           cp "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Redist/MSVC/14.29.30133/$PYTHON_ARCH/Microsoft.VC142.CRT/msvcp140.dll" pandas/_libs/window

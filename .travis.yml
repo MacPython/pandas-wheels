@@ -13,6 +13,7 @@ env:
       - PLAT=aarch64
       - NP_BUILD_DEP="numpy==1.17.3"
       - NP_TEST_DEP="numpy==1.17.3"
+      - EXTRA_BUILD_DEP="versioneer[toml]"
       - CYTHON_BUILD_DEP="cython==0.29.32"
       - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
       - TEST_DEPENDS="pytest pytest-xdist hypothesis==6.52.1"

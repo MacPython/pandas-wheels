@@ -63,6 +63,7 @@ jobs:
       - bash: |
           set -e
           pip install virtualenv wheel
+          pip install versioneer[toml]
           BUILD_DEPENDS="$NP_BUILD_DEP $CYTHON_BUILD_DEP"
 
           source multibuild/common_utils.sh
