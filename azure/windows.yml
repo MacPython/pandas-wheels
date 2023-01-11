@@ -8,7 +8,7 @@ jobs:
     pool:
       vmImage: ${{ parameters.vmImage }}
     variables:
-      BUILD_COMMIT: "v1.5.2"
+      BUILD_COMMIT: "1.5.x"
       NP_BUILD_DEP: "1.17.3"
       # TODO: Unpin me once pandas restores compat with 1.24.0
       NP_TEST_DEP: "numpy==1.23.5"
