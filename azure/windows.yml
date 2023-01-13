@@ -10,8 +10,6 @@ jobs:
     variables:
       BUILD_COMMIT: "1.5.x"
       NP_BUILD_DEP: "1.17.3"
-      # TODO: Unpin me once pandas restores compat with 1.24.0
-      NP_TEST_DEP: "numpy==1.23.5"
       CYTHON_BUILD_DEP: "0.29.32"
       NIGHTLY_BUILD_COMMIT: "main"
       NIGHTLY_BUILD: "false"
