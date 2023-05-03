@@ -1,11 +1,14 @@
-schedules:
-- cron: "27 3 */1 * *"
-  # 3:27am UTC everyday
-  displayName: Nighthly build
-  branches:
-    include:
-    - master
-  always: true
+# Not needed anymore since wheel building
+# has moved to the main pandas repo.
+# Commented for posterity.
+# schedules:
+# - cron: "27 3 */1 * *"
+#   # 3:27am UTC everyday
+#   displayName: Nighthly build
+#   branches:
+#     include:
+#     - master
+#   always: true
 
 trigger:
 - master
